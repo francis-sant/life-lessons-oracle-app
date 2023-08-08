@@ -10,27 +10,19 @@ describe("LessonDisplay.vue", () => {
     // const wrapper = shallowMount(LifeLessonsOracle, {});
   });
 
-  it("displays life lessons category in a list", () => {});
+  it("does display the messages for the right category", () => {});
 
   it("does not display the clear button when life lessons array is empty", () => {});
 
-  it("does display the learn My lesson button when life lessons array is empty", () => {});
-
-  it("does display the learn My lesson button when category is selected", () => {});
-
-  it("updates lessons array with random life lessons on Random category", () => {});
-
-  it("does not show the card lesson while category is been selected", () => {});
-
-  it("does not display Like, Share, and Save buttons when card is been selected", () => {});
+  it("does display Like, Save, and Comment buttons ", () => {});
 
   it("does show the My Card Lesson when the button 'My Insight' is clicked", () => {});
 
-  it("does display the clear button when life lessons card is shown", () => {});
+  it("does display the Clear button when My Card Lesson is showing", () => {});
 
-  it("does display Like, Share, and Save buttons when card is shown", () => {});
-
-  it("does Save button save in persons profile", () => {});
+  it("does Save button works to save the message ", () => {});
 
   it("does Like button works properly", () => {});
+
+  it("does save the comment in the section 'My realization comment' ", () => {});
 });

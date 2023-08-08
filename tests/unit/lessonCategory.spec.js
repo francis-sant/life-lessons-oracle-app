@@ -6,21 +6,18 @@
 // import LessonCategory from "@/components/LessonCategory.vue";
 
 describe("LessonCategory.vue", () => {
-  it("renders a the Lifelessonoracle component correctly", () => {
+  it("renders a the LifelessOracle component correctly", () => {
     // const wrapper = shallowMount(LifeLessonsOracle, {});
   });
 
   it("displays life lessons category in a list", () => {});
 
-  it("does display the 'My Insight' button when category is selected", () => {});
+  it("does not Display any message while category is been selected", () => {});
 
-  it("updates lessons array with random life lessons on Random category", () => {});
+  it("does display the 'My Insight' button while category is been selected", () => {});
 
-  it("does not Display any lesson while category is been selected", () => {});
+  it("updates lessons array when Category is selected", () => {});
 
   it("does not display Like, Share, and Save buttons when card is been selected", () => {});
 
-  it("does display the clear button when life lessons card is shown", () => {});
-
-  it("does display Like, Share, and Save buttons when card is shown", () => {});
 });
