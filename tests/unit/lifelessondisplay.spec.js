@@ -11,7 +11,6 @@
 // import LifeLessonsOracle from "@/components/LifeLessonsOracle.vue";
 // import LessonDisplay from "@/components/LessonDisplay.vue";
 
-
 describe("LessonDisplay.vue", () => {
   it("Is the props lessons working", () => {});
 
@@ -29,9 +28,9 @@ describe("LessonDisplay.vue", () => {
 
   it("does display the Clear button when My Card Lesson is showing", () => {});
 
-  it("does Save button works to save the message ", () => {});
-
   it("does Like button works properly", () => {});
 
-  it("does save the comment in the section 'My realization comment' ", () => {});
+  it("does Save button works to save the message for the user ", () => {});
+
+  it("does The comment  save the comment in the section 'My realization comment' ", () => {});
 });

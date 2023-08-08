@@ -3,9 +3,9 @@
 // to receive an Insight.This component receives life lesson data as an array and emits selections to the parent component.
 
 // import { shallowMount } from "@vue/test-utils";
-// import LessonCategory from "@/components/LessonCategory.vue";
+// import LessonLessonDisplay from "@/components/LessonCategory.vue";
 
-describe("LessonCategory.vue", () => {
+describe("LifeLessonDisplay.vue", () => {
   it("renders a the LifelessOracle component correctly", () => {
     // const wrapper = shallowMount(LifeLessonsOracle, {});
   });
@@ -19,5 +19,4 @@ describe("LessonCategory.vue", () => {
   it("updates lessons array when Category is selected", () => {});
 
   it("does not display Like, Share, and Save buttons when card is been selected", () => {});
-
 });

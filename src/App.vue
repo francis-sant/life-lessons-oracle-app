@@ -1,4 +1,7 @@
 <template>
+  <h1>Life Lesson Oracle</h1>
+
+  <h2>Selected Courses: {{ coursesSelected }}</h2>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
