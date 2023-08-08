@@ -1,8 +1,5 @@
 <template>
-  <div class="messages">
-    
-   
-  </div>
+  <div class="messages"></div>
 </template>
 
 <script>
