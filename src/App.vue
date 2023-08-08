@@ -1,13 +1,14 @@
 <template>
   <h1>Life Lesson Oracle</h1>
 
-  <h2>Select your category:</h2>
+  <h2>Select your category: {{ likes }}</h2>
   <img alt="Vue logo" src="./assets/logo.png" />
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <LifeLessonDisplay
     v-for="lesson in lessons"
     :lesson="lesson"
     :key="lesson.id"
+    @like-from-parent="addOneLike"
   />
 </template>
 
@@ -19,7 +20,8 @@ export default {
   data() {
     return {
       // categorySelected: [list],
-      categoryList: [],
+      likes: 0,
+      categoryList: ["random"],
       lessons: [
         {
           id: 1,
@@ -54,6 +56,14 @@ export default {
   },
   components: {
     LifeLessonDisplay,
+  },
+  methods: {
+    addOneLike() {
+      this.likes++;
+    },
+    removeOne() {
+      this.count--;
+    },
   },
 };
 </script>

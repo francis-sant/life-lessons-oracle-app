@@ -6,10 +6,10 @@
     <p>{{ lesson.affirmation }}</p>
 
     <div v-if="started == true">
-      <button @click="inspireMe">Inspire Me</button>
+      <button @click="likeMe">Like Me</button>
     </div>
-    <div v-else-if="reset == true">
-      <button @click="ResetMe">Ask Again</button>
+    <div v-if="started == true">
+      <button @click="inspireMe">Ask Again</button>
     </div>
   </div>
 </template>
@@ -34,21 +34,21 @@ export default {
 
   data() {
     return {
-      started: false,
-      reset: true,
+      started: true,
+      likes: 0,
     };
   },
 
   methods: {
     inspireMe() {
       this.$emit("count-to-parent");
-      this.count++;
-      this.classFull = true;
+      this.likes++;
+      //   this.classFull = true;
     },
-    ResetMe() {
-      this.$emit("reset-from-parent");
-      this.count--;
-      this.classFull = false;
+    likeMe() {
+      this.$emit("like-from-parent");
+      this.count++;
+      //   this.classFull = false;
     },
   },
 };
