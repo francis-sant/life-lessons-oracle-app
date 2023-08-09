@@ -1,15 +1,15 @@
 <template>
   <div class="lesson">
-    <h2>{{ lesson.name }}</h2>
+    <h2>{{ lesson.title }}</h2>
     <h3>{{ lesson.category }}</h3>
-    <p>{{ lesson.message }}</p>
-    <p>{{ lesson.affirmation }}</p>
+    <p>Your Lesson: {{ lesson.message }}</p>
+    <p>Affirmation of the day: {{ lesson.affirmation }}</p>
 
-    <div v-if="started == true">
+    <div>
       <button @click="likeMe">Like Me</button>
     </div>
-    <div v-if="started == true">
-      <button @click="inspireMe">Ask Again</button>
+    <div v-if="!started">
+      <button @click="inspireMe">Inspire Me</button>
     </div>
   </div>
 </template>
@@ -34,20 +34,19 @@ export default {
 
   data() {
     return {
-      started: true,
+      started: false,
       likes: 0,
     };
   },
 
   methods: {
     inspireMe() {
-      this.$emit("count-to-parent");
-      this.likes++;
-      //   this.classFull = true;
+      this.$emit("inspire-from-parent");
     },
+
     likeMe() {
       this.$emit("like-from-parent");
-      this.count++;
+      this.likes++;
       //   this.classFull = false;
     },
   },
