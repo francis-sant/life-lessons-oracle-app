@@ -13,13 +13,9 @@
 describe("LessonDisplay.vue", () => {
   it("Is the props lessons working", () => {});
 
-  it("starts with an empty lessons array", () => {
-    // const wrapper = shallowMount(LifeLessonsOracle, {});
-  });
-
   it("does display a random message for the starting random category", () => {});
 
-  it("does it show Inspare Me again button after the message appears", () => {});
+  it("does it show Inspare Me button after the message appears", () => {});
 
   it("does display Like, Add a My spiritual advice buttons correclty ", () => {});
 
