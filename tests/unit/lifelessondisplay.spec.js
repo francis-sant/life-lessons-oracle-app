@@ -6,12 +6,32 @@
 // the lesson and the number of likes will be displayed. The user can also add a comment
 // to the lesson and it will be displayed in the "My realization comment" section.
 
-// import { shallowMount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 // import LifeLessonsOracle from "@/components/LifeLessonsOracle.vue";
-// import LessonDisplay from "@/components/LessonDisplay.vue";
+import LifeLessonDisplay from "@/components/LifeLessonDisplay.vue";
 
-describe("LessonDisplay.vue", () => {
-  it("Is the props lessons working", () => {});
+describe("LifeLessonDisplay.vue", () => {
+  it("Is the props lesson working", () => {
+       const lesson = {
+          id: 1,
+          title: "Self-Inquiry",
+          category: "Ramana Maharshi",
+          message:
+            "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
+          affirmation:
+            "I am not my thoughts; I am the silent observer of my mind.",
+        };
+     
+    const wrapper = shallowMount(LifeLessonDisplay, {
+      props: {
+        lesson,
+      },
+    });
+    expect(wrapper.find("h2").text()).toContain(lesson.title);
+    expect(wrapper.find("h3").text()).toContain(lesson.category);
+    expect(wrapper.find("p").text()).toContain(lesson.message);
+    
+  });
 
   it("does display a random message for the starting random category", () => {});
 

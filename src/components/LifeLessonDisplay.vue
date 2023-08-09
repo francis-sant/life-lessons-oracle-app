@@ -23,10 +23,12 @@ export default {
       default() {
         return {
           id: 1,
-          name: "You're a soul, not a body.",
-          category: "Self-Improvement",
-          message: "You are a work in progress.",
-          affirmation: "I am amazing!",
+          title: "Self-Inquiry",
+          category: "Ramana Maharshi",
+          message:
+            "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
+          affirmation:
+            "I am not my thoughts; I am the silent observer of my mind.",
         };
       },
     },
