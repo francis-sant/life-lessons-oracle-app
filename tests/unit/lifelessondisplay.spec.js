@@ -12,16 +12,15 @@ import LifeLessonDisplay from "@/components/LifeLessonDisplay.vue";
 
 describe("LifeLessonDisplay.vue", () => {
   it("Is the props lesson working", () => {
-       const lesson = {
-          id: 1,
-          title: "Self-Inquiry",
-          category: "Ramana Maharshi",
-          message:
-            "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
-          affirmation:
-            "I am not my thoughts; I am the silent observer of my mind.",
-        };
-     
+    const lesson = {
+      id: 1,
+      title: "Self-Inquiry",
+      category: "Ramana Maharshi",
+      message:
+        "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
+      affirmation: "I am not my thoughts; I am the silent observer of my mind.",
+    };
+
     const wrapper = shallowMount(LifeLessonDisplay, {
       props: {
         lesson,
@@ -30,7 +29,6 @@ describe("LifeLessonDisplay.vue", () => {
     expect(wrapper.find("h2").text()).toContain(lesson.title);
     expect(wrapper.find("h3").text()).toContain(lesson.category);
     expect(wrapper.find("p").text()).toContain(lesson.message);
-    
   });
 
   it("does display a random message for the starting random category", () => {});
