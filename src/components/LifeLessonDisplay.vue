@@ -22,9 +22,14 @@
       <button data-testid="inspireMe" @click="inspireMe">Inspire Me</button>
     </div>
   </div>
+
+  <LessonsComments :newComment="newComment" :comments="comments" @new-comment="addNewComment">
+  </LessonsComments>
 </template>
 
 <script>
+import LessonsComments from "./LessonsComments.vue";
+
 export default {
   name: "LifeLessonDisplay",
   props: {
@@ -55,6 +60,10 @@ export default {
     };
   },
 
+  components: {
+    LessonsComments,
+  },
+
   methods: {
     inspireMe() {
       this.started = !this.started;
@@ -67,6 +76,14 @@ export default {
       this.$emit("like-from-parent");
       this.likes++;
       //   this.classFull = false;
+    },
+    addNewComment(newComment) {
+      this.comments.push(newComment);
+      console.log(this.comments[this.comments.length - 1]);
+
+      for (const [key, value] of Object.entries(newComment)) {
+        console.log(`${key}: ${value}`);
+      }
     },
   },
 };

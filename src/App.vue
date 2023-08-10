@@ -12,16 +12,10 @@
     @like-from-parent="addOneLike"
     @inspire-from-parent="inspireMeAgain"
   />
-
-  <LessonsComments
-    :comments="comments"
-    @new-comment="addNewComment"
-  ></LessonsComments>
 </template>
 
 <script>
 import LifeLessonDisplay from "./components/LifeLessonDisplay.vue";
-import LessonsComments from "./components/LessonsComments.vue";
 import LessonCategory from "./components/LessonCategory.vue";
 
 export default {
@@ -91,7 +85,6 @@ export default {
   },
   components: {
     LifeLessonDisplay,
-    LessonsComments,
     LessonCategory,
   },
 
@@ -104,10 +97,6 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.lessons.length);
       this.currentLesson = this.lessons[randomIndex];
       console.log(this.currentLesson);
-    },
-    addNewComment(newComment) {
-      this.comments.push(newComment);
-      console.log(this.comments);
     },
 
     //missing update the lessondisplay to use selectedcategory to filter the lessons
