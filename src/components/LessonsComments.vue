@@ -39,18 +39,40 @@ export default {
       this.newMessage.title = "";
       this.newMessage.message = "";
     },
+    // getNextId() {
+    //   const presentIds = this.lesson.map((message) => message.id);
+    //   return Math.max(...presentIds) + 1;
+    // },
+    // getNextId() {
+    //   let beginToEnd = 0;
+
+    //   for (let lesson of this.lesson) {
+    //     if (lesson.id > beginToEnd) {
+    //       beginToEnd = lesson.id;
+    //     } else {
+    //       beginToEnd += beginToEnd;
+    //     }
+    //     // console.log(beginToEnd);
+    //   }
+
+    //   // console.log(beginToEnd + 1);
+    // },
+
     getNextId() {
-      let beginToEnd = 0;
+      let highestId = 0;
 
       for (let lesson of this.lessons) {
-        if (lesson.id > beginToEnd) {
-          beginToEnd = lesson.id;
+        if (lesson.id > highestId) {
+          highestId = lesson.id;
         }
       }
 
-      return beginToEnd + 1;
+      const nextId = highestId + 1;
+      console.log(nextId); // Log the calculated next ID
+      // return nextId; // Return the next ID
     },
   },
+  computed: {},
 };
 </script>
 
