@@ -40,8 +40,15 @@ export default {
       this.newMessage.message = "";
     },
     getNextId() {
-      const presentIds = this.lesson.map((message) => message.id);
-      return Math.max(...presentIds) + 1;
+      let beginToEnd = 0;
+
+      for (let lesson of this.lessons) {
+        if (lesson.id > beginToEnd) {
+          beginToEnd = lesson.id;
+        }
+      }
+
+      return beginToEnd + 1;
     },
   },
 };

@@ -1,9 +1,10 @@
 <template>
   <h1>Life Lesson Oracle</h1>
 
-  <h2>Select your category: {{ likes }}</h2>
-  <h2>RandomId: {{ randomLesson.id }}</h2>
   <img alt="Vue logo" src="./assets/logo.png" />
+  <LessonCategory :lessons="lessons" @category-selected="selectCategory" />
+
+  <h2>Category Selected: {{ selectedCategory }}</h2>
 
   <LifeLessonDisplay
     :lesson="randomLesson"
@@ -21,6 +22,7 @@
 <script>
 import LifeLessonDisplay from "./components/LifeLessonDisplay.vue";
 import LessonsComments from "./components/LessonsComments.vue";
+import LessonCategory from "./components/LessonCategory.vue";
 
 export default {
   name: "App",
@@ -29,6 +31,7 @@ export default {
       likes: 0,
       currentLesson: [],
       comments: [],
+      selectedCategory: "",
       lessons: [
         {
           id: 1,
@@ -89,17 +92,7 @@ export default {
   components: {
     LifeLessonDisplay,
     LessonsComments,
-  },
-
-  computed: {
-    randomLesson() {
-      const randomIndex = Math.floor(Math.random() * this.lessons.length);
-      return this.lessons[randomIndex];
-    },
-    // getRandomLesson() {
-    //   const randomIndex = Math.floor(Math.random() * this.lessons.length);
-    //   return this.lessons[randomIndex];
-    // },
+    LessonCategory,
   },
 
   methods: {
@@ -116,6 +109,38 @@ export default {
       this.comments.push(newComment);
       console.log(this.comments);
     },
+
+    //missing update the lessondisplay to use selectedcategory to filter the lessons
+    categorySelected(category) {
+      if (category === "") {
+        this.currentLesson = [];
+        const randomIndex = Math.floor(Math.random() * this.lessons.length);
+        this.currentLesson = this.lessons[randomIndex];
+        console.log(this.currentLesson);
+      } else {
+        const filteredLessons = this.lessons.filter(
+          (lesson) => lesson.category === category
+        );
+        const randomIndex = Math.floor(Math.random() * filteredLessons.length);
+        this.currentLesson = filteredLessons[randomIndex];
+        console.log(this.currentLesson);
+      }
+    },
+
+    selectCategory(category) {
+      this.selectedCategory = category;
+    },
+  },
+
+  computed: {
+    randomLesson() {
+      const randomIndex = Math.floor(Math.random() * this.lessons.length);
+      return this.lessons[randomIndex];
+    },
+    // getRandomLesson() {
+    //   const randomIndex = Math.floor(Math.random() * this.lessons.length);
+    //   return this.lessons[randomIndex];
+    // },
   },
 };
 </script>

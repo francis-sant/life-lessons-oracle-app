@@ -14,7 +14,7 @@
       <p>Your Lesson: {{ currentLesson.message }}</p>
       <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
     </div>
-
+    <div>{{ likes }}</div>
     <div>
       <button data-testid="likeMe" @click="likeMe">Like Me</button>
     </div>
