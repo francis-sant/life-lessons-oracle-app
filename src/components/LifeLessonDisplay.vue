@@ -1,12 +1,12 @@
 <template>
-  <div class="lesson">
-    <div v-if="!started">
+  <div>
+    <div class="lesson" v-if="!started">
       <h2>{{ lesson.title }}</h2>
       <h3>{{ lesson.category }}</h3>
       <p>Your Lesson: {{ lesson.message }}</p>
-      <p>Affirmation of the day: {{ lesson.affirmation }}</p>
+      <p data-testid='affirmation'>Affirmation of the day: {{ lesson.affirmation }}</p>
     </div>
-    <div v-else>
+    <div class="currentlesson" v-else>
       <h2>{{ currentLesson.title }}</h2>
       <h3>{{ currentLesson.category }}</h3>
       <p>Your Lesson: {{ currentLesson.message }}</p>
@@ -14,10 +14,10 @@
     </div>
 
     <div>
-      <button @click="likeMe">Like Me</button>
+      <button data-testid='likeMe' @click="likeMe">Like Me</button>
     </div>
     <div>
-      <button @click="inspireMe">Inspire Me</button>
+      <button data-testid='inspireMe' @click="inspireMe">Inspire Me</button>
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@
   <h2>Select your category: {{ likes }}</h2>
   <h2>RandomId: {{ randomLesson.id }}</h2>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+
   <LifeLessonDisplay
     :lesson="randomLesson"
     :current-lesson="currentLesson"
