@@ -4,7 +4,9 @@
       <h2>{{ lesson.title }}</h2>
       <h3>{{ lesson.category }}</h3>
       <p>Your Lesson: {{ lesson.message }}</p>
-      <p data-testid='affirmation'>Affirmation of the day: {{ lesson.affirmation }}</p>
+      <p data-testid="affirmation">
+        Affirmation of the day: {{ lesson.affirmation }}
+      </p>
     </div>
     <div class="currentlesson" v-else>
       <h2>{{ currentLesson.title }}</h2>
@@ -14,10 +16,10 @@
     </div>
 
     <div>
-      <button data-testid='likeMe' @click="likeMe">Like Me</button>
+      <button data-testid="likeMe" @click="likeMe">Like Me</button>
     </div>
     <div>
-      <button data-testid='inspireMe' @click="inspireMe">Inspire Me</button>
+      <button data-testid="inspireMe" @click="inspireMe">Inspire Me</button>
     </div>
   </div>
 </template>

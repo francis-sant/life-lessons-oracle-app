@@ -40,7 +40,6 @@ describe("LifeLessonDisplay.vue", () => {
   });
 
   it("does display inital random lesson when Started is false", () => {
-
     const lesson = {
       id: 1,
       title: "Self-Inquiry",
@@ -50,24 +49,24 @@ describe("LifeLessonDisplay.vue", () => {
       affirmation: "I am not my thoughts; I am the silent observer of my mind.",
     };
 
-    const currentLesson = {    
-    };
-    
+    const currentLesson = {};
+
     const wrapper = shallowMount(LifeLessonDisplay, {
       props: {
         lesson,
         currentLesson,
-         },
+      },
     });
 
     expect(wrapper.find(".lesson h2").text()).toBe(lesson.title);
     expect(wrapper.find(".lesson h3").text()).toBe(lesson.category);
     expect(wrapper.find(".lesson p").text()).toContain(lesson.message);
-    expect(wrapper.find("[data-testid='affirmation' ]").text()).toContain(lesson.affirmation);
+    expect(wrapper.find("[data-testid='affirmation' ]").text()).toContain(
+      lesson.affirmation
+    );
   });
 
-  it("does toggle between lesson and currentlesson when toggled", async  () => {
-
+  it("does toggle between lesson and currentlesson when toggled", async () => {
     const lesson = {
       id: 1,
       title: "Self-Inquiry",
@@ -97,8 +96,6 @@ describe("LifeLessonDisplay.vue", () => {
     expect(wrapper.vm.started).toBe(true);
     await wrapper.find("[data-testid='inspireMe' ]").trigger("click");
     expect(wrapper.vm.started).toBe(false);
-
-
   });
 
   it("does display Like, Add a My spiritual advice buttons correclty ", () => {});

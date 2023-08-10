@@ -11,18 +11,24 @@
     @like-from-parent="addOneLike"
     @inspire-from-parent="inspireMeAgain"
   />
+
+  <LessonsComments
+    :comments="comments"
+    @new-comment="addNewComment"
+  ></LessonsComments>
 </template>
 
 <script>
 import LifeLessonDisplay from "./components/LifeLessonDisplay.vue";
+import LessonsComments from "./components/LessonsComments.vue";
 
 export default {
   name: "App",
   data() {
     return {
-      // categorySelected: [list],
       likes: 0,
       currentLesson: [],
+      comments: [],
       lessons: [
         {
           id: 1,
@@ -82,6 +88,7 @@ export default {
   },
   components: {
     LifeLessonDisplay,
+    LessonsComments,
   },
 
   computed: {
@@ -104,6 +111,10 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.lessons.length);
       this.currentLesson = this.lessons[randomIndex];
       console.log(this.currentLesson);
+    },
+    addNewComment(newComment) {
+      this.comments.push(newComment);
+      console.log(this.comments);
     },
   },
 };
