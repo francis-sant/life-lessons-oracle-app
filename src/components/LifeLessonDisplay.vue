@@ -1,14 +1,22 @@
 <template>
   <div class="lesson">
-    <h2>{{ lesson.title }}</h2>
-    <h3>{{ lesson.category }}</h3>
-    <p>Your Lesson: {{ lesson.message }}</p>
-    <p>Affirmation of the day: {{ lesson.affirmation }}</p>
+    <div v-if="!started">
+      <h2>{{ lesson.title }}</h2>
+      <h3>{{ lesson.category }}</h3>
+      <p>Your Lesson: {{ lesson.message }}</p>
+      <p>Affirmation of the day: {{ lesson.affirmation }}</p>
+    </div>
+    <div v-else>
+      <h2>{{ currentLesson.title }}</h2>
+      <h3>{{ currentLesson.category }}</h3>
+      <p>Your Lesson: {{ currentLesson.message }}</p>
+      <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
+    </div>
 
     <div>
       <button @click="likeMe">Like Me</button>
     </div>
-    <div v-if="!started">
+    <div>
       <button @click="inspireMe">Inspire Me</button>
     </div>
   </div>
@@ -32,6 +40,10 @@ export default {
         };
       },
     },
+    currentLesson: {
+      type: Object,
+      required: true,
+    },
   },
 
   data() {
@@ -43,7 +55,10 @@ export default {
 
   methods: {
     inspireMe() {
-      this.$emit("inspire-from-parent");
+      this.started = !this.started;
+      if (this.started) {
+        this.$emit("inspire-from-parent");
+      }
     },
 
     likeMe() {

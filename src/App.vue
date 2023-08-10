@@ -7,6 +7,7 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <LifeLessonDisplay
     :lesson="randomLesson"
+    :current-lesson="currentLesson"
     @like-from-parent="addOneLike"
     @inspire-from-parent="inspireMeAgain"
   />
@@ -21,7 +22,7 @@ export default {
     return {
       // categorySelected: [list],
       likes: 0,
-      randominLesson: {},
+      currentLesson: [],
       lessons: [
         {
           id: 1,
@@ -82,20 +83,27 @@ export default {
   components: {
     LifeLessonDisplay,
   },
+
   computed: {
     randomLesson() {
       const randomIndex = Math.floor(Math.random() * this.lessons.length);
       return this.lessons[randomIndex];
     },
+    // getRandomLesson() {
+    //   const randomIndex = Math.floor(Math.random() * this.lessons.length);
+    //   return this.lessons[randomIndex];
+    // },
   },
+
   methods: {
     addOneLike() {
       this.likes++;
     },
     inspireMeAgain() {
+      this.currentLesson = [];
       const randomIndex = Math.floor(Math.random() * this.lessons.length);
-      const randomLesson = this.lessons[randomIndex];
-      this.randomLesson.id = randomLesson.id;
+      this.currentLesson = this.lessons[randomIndex];
+      console.log(this.currentLesson);
     },
   },
 };
