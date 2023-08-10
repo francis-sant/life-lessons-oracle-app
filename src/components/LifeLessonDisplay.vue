@@ -23,7 +23,11 @@
     </div>
   </div>
 
-  <LessonsComments :newComment="newComment" :comments="comments" @new-comment="addNewComment">
+  <LessonsComments
+    :newComment="newComment"
+    :comments="comments"
+    @new-comment="addNewComment"
+  >
   </LessonsComments>
 </template>
 
