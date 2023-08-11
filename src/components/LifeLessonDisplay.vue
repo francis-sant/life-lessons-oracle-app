@@ -8,11 +8,25 @@
         Affirmation of the day: {{ lesson.affirmation }}
       </p>
     </div>
-    <div class="currentlesson" v-else>
-      <h2>{{ currentLesson.title }}</h2>
-      <h3>{{ currentLesson.category }}</h3>
-      <p>Your Lesson: {{ currentLesson.message }}</p>
-      <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
+    <div class="currentlesson" v-else-if="currentLesson || selectedCategory">
+      <h2>
+        {{ currentLesson ? currentLesson.title : selectedCategory.title }}
+      </h2>
+      <h3>
+        {{ currentLesson ? currentLesson.category : selectedCategory.category }}
+      </h3>
+      <p>
+        Your Lesson:
+        {{ currentLesson ? currentLesson.message : selectedCategory.message }}
+      </p>
+      <p>
+        Affirmation of the day:
+        {{
+          currentLesson
+            ? currentLesson.affirmation
+            : selectedCategory.affirmation
+        }}
+      </p>
     </div>
     <div>{{ likes }}</div>
     <div>
@@ -23,12 +37,15 @@
     </div>
   </div>
 
-  <LessonsComments
-    :newComment="newComment"
-    :comments="comments"
-    @new-comment="addNewComment"
-  >
-  </LessonsComments>
+  <LessonsComments @new-comment="addNewComment" />
+
+  <div class="thecomments">
+    <h3>What is your realization with this lesson?</h3>
+    <div v-for="(comment, index) in comments" :key="index">
+      <h4>Title: {{ comment.title }}</h4>
+      <h4>My Realization: {{ comment.message }}</h4>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -55,12 +72,17 @@ export default {
       type: Object,
       required: true,
     },
+    newComment: {
+      type: Object,
+      required: true,
+    },
   },
 
   data() {
     return {
       started: false,
       likes: 0,
+      comments: [],
     };
   },
 
@@ -85,9 +107,9 @@ export default {
       this.comments.push(newComment);
       console.log(this.comments[this.comments.length - 1]);
 
-      for (const [key, value] of Object.entries(newComment)) {
-        console.log(`${key}: ${value}`);
-      }
+      // for (const [key, value] of Object.entries(newComment)) {
+      //   console.log(`${key}: ${value}`);
+      // }
     },
   },
 };

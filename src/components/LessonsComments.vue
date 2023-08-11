@@ -1,28 +1,28 @@
 <template>
   <div class="myForm">
     <form @submit.prevent="addNewMessage">
-      <label for="title">Message Title:</label>
+      <label for="title">Title:</label>
       <input
         v-model="newMessage.title"
         type="text"
         id="title"
-        placeholder="Your Advice Title"
+        placeholder="My Advice Title"
       />
 
-      <label for="content">Message Content:</label>
+      <label for="content">Your Realization:</label>
       <textarea
         v-model="newMessage.message"
         id="message"
-        placeholder="Your Advice here"
+        placeholder="My realization here"
       ></textarea>
 
       <button type="submit">Add Message</button>
     </form>
 
-    <div class="myComments" :value="inputText">
+    <!-- <div class="myComments">
       <h2>Title: {{ newMessage.title }}</h2>
       <h2>My Message: {{ newMessage.message }}</h2>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -36,13 +36,9 @@ export default {
         return [];
       },
     },
-    inputText: {
-      type: String,
-      default: "",
-    },
-    // currentLesson: {
-    //   type: Object,
-    //   required: true,
+    // inputText: {
+    //   type: String,
+    //   default: "",
     // },
   },
   data() {
@@ -56,49 +52,17 @@ export default {
   },
   methods: {
     addNewMessage() {
-      let newMsg = [];
-      const newComment = { ...this.newMessage };
-      this.$emit("new-comment", newComment);
-      this.newMessage.title = newComment.title;
-      this.newMessage.message = newComment.message;
-      this.newMessage.id = newComment.id + 1;
-      newMsg = this.newMessage;
-      // return newMsg;
-      console.log(newMsg);
+      if (
+        this.newMessage.title.trim() !== "" &&
+        this.newMessage.message.trim() !== ""
+      ) {
+        const newComment = { ...this.newMessage };
+        this.$emit("new-comment", newComment);
+        this.newMessage.title = "";
+        this.newMessage.message = "";
+      }
     },
-    // getNextId() {
-    //   const presentIds = this.lesson.map((message) => message.id);
-    //   return Math.max(...presentIds) + 1;
-    // },
-    // getNextId() {
-    //   let beginToEnd = 0;
-
-    //   for (let lesson of this.currentLesson) {
-    //     if (lesson.id > beginToEnd) {
-    //       beginToEnd = lesson.id;
-    //     } else {
-    //       beginToEnd += beginToEnd;
-    //     }
-    //     // console.log(beginToEnd);
-    //   }
-
-    // console.log(beginToEnd + 1);
   },
-
-  // getNextId() {
-  //   let highestId = 0;
-
-  //   for (let lesson of this.currentLesson) {
-  //     if (lesson.id > highestId) {
-  //       highestId = lesson.id;
-  //     }
-  //   }
-
-  //   const nextId = highestId + 1;
-  //   return nextId;
-  //   // console.log(nextId); // Log the calculated next ID
-  //   // return nextId; // Return the next ID
-  // },
 };
 </script>
 
@@ -121,4 +85,15 @@ li {
 a {
   color: #42b983;
 }
+
+// form {
+//   padding: 20px;
+//   display: flex;
+//   gap: 10px;
+//   justify-content: center;
+//   border: 3px solid red;
+//   max-width: 743px;
+//   margin: 20px auto;
+//   border-radius: 10px;
+// }
 </style>

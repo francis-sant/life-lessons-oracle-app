@@ -7,6 +7,7 @@
   <h2>Category Selected: {{ selectedCategory }}</h2>
 
   <LifeLessonDisplay
+    :selected-category="selectedCategory"
     :lesson="randomLesson"
     :current-lesson="currentLesson"
     @like-from-parent="addOneLike"
@@ -17,68 +18,139 @@
 <script>
 import LifeLessonDisplay from "./components/LifeLessonDisplay.vue";
 import LessonCategory from "./components/LessonCategory.vue";
-
 export default {
   name: "App",
   data() {
     return {
       likes: 0,
-      currentLesson: [],
-      comments: [],
+      currentLesson: null,
       selectedCategory: "",
       lessons: [
         {
           id: 1,
-          title: "Self-Inquiry",
-          category: "Ramana Maharshi",
+          title: "Elder Souls",
+          category: "Spiritual Growth",
           message:
-            "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
+            "Older souls often choose difficult lives to work on unresolved issues or new challenges. Observing life and guiding others from knowledge is a sacred task. Difficulties in your environment can seem tamer due to your abilities.",
           affirmation:
-            "I am not my thoughts; I am the silent observer of my mind.",
+            "I embrace life's challenges as opportunities for spiritual growth and learning.",
         },
         {
           id: 2,
-          title: "Mindfulness",
-          category: "Osho",
+          title: "Spiritual Benefits of Autism",
+          category: "Awareness",
           message:
-            "Be present in every moment without judgment or attachment. Observe your thoughts, emotions, and sensations as they arise, and let them pass.",
-          affirmation: "I am here and now, witnessing life as it unfolds.",
+            "Autism can provide a unique perception of energies and communication with spirits. It's chosen for various purposes, including exploration of human characteristics and life lessons. Your child's unique perception is a reminder of unexplored possibilities.",
+          affirmation:
+            "I open my mind to different perspectives, knowing that unique perceptions offer valuable insights.",
         },
         {
           id: 3,
-          title: "Inner Engineering",
-          category: "Sadhguru",
+          title: "Where is My Money?",
+          category: "Personal Fulfillment",
           message:
-            "Cultivate inner balance through yogic practices and self-awareness. Align your body, mind, and energy to experience harmony and transformation.",
+            "Life situations don't always align with our dreams. Happiness comes from making the best of what we have. Wisdom is gained through understanding and making conscious choices. Express love for yourself and embrace all possibilities.",
           affirmation:
-            "I am the master of my inner state, creating a life of joy and wellbeing.",
+            "I am grateful for the abundance in my life and open to new opportunities for personal fulfillment.",
         },
         {
           id: 4,
-          title: "Silent Presence",
-          category: "Mooji",
+          title: "Healing Self",
+          category: "Self-Discovery",
           message:
-            "Rest in the stillness of your own being. Recognize that you are the unchanging awareness that witnesses all experiences.",
+            "Fill the void left after clearing negative patterns with unconditional love. Wisdom is gained through understanding experiences and choices. Embrace change, examine beliefs, and create your own reality.",
           affirmation:
-            "I am the eternal presence beyond all forms and stories.",
+            "I love and accept myself unconditionally, and I am open to receiving the wisdom that each experience brings.",
         },
         {
           id: 5,
-          title: "Holistic Healing",
-          category: "Louise Hay",
+          title: "Can't Stop Crying",
+          category: "Emotional Well-being",
           message:
-            "Heal your life by changing your thoughts and beliefs. Recognize the connection between your mental patterns and physical health.",
+            "Unresolved trauma from childhood can lead to suppressed emotions. Tears may be releasing hurt, guilt, and relief. Address the memories through regression or deep meditation. Allow yourself to heal and move forward.",
           affirmation:
-            "I release old patterns and embrace loving thoughts, inviting health and happiness into my life.",
+            "I release emotional burdens and allow healing energy to flow through me, restoring my emotional well-being.",
         },
         {
           id: 6,
-          title: "Akashic Records",
-          category: "Edgar Cayce",
+          title: "Reality Check",
+          category: "Personal Transformation",
           message:
-            "Access the Akashic Records to gain insights into your soul's journey. Seek guidance and clarity from the universal wisdom.",
+            "Relationships based on fantasies can lead to dissatisfaction. Communication, self-honor, and creative self-expression are key. It's time to honor your true desires and create the life you want, regardless of past choices.",
           affirmation:
-            "I open myself to the wisdom of the universe, receiving guidance from the depths of existence.",
+            "I trust my inner wisdom and take empowered steps to create a fulfilling life aligned with my true desires.",
+        },
+        {
+          id: 7,
+          title: "The Power of Forgiveness",
+          category: "Awareness",
+          message:
+            "Thoughts and beliefs shape our reality, and they are not predetermined. Use feelings and intuition to make choices, and be mindful of your thought patterns. Connect with your inner wisdom to navigate your life's path.",
+          affirmation:
+            "I am aware of my thought patterns and emotions, using them to consciously shape my reality.",
+        },
+        {
+          id: 8,
+          title: "Life Lessons and Karma",
+          category: "Spiritual Growth",
+          message:
+            "Violent acts and negative experiences are chosen as life lessons in duality. Karma is a belief in retribution, while life lessons offer opportunities for growth and understanding. Every experience contributes to spiritual evolution.",
+          affirmation:
+            "I embrace every experience as an opportunity for growth and understanding, transcending the limitations of karma.",
+        },
+        {
+          id: 9,
+          title: "Why leave unconditional love?",
+          category: "Spiritual Growth",
+          message:
+            "Choosing to reincarnate is not done for the purpose of finding unconditional love...",
+          affirmation:
+            "I embrace my journey of self-discovery and growth, knowing that I possess the power to create my reality.",
+        },
+        {
+          id: 10,
+          title: "Which way is the right way?",
+          category: "Self-Discovery",
+          message:
+            "The universe brings to a soul the things that it wished to experience...",
+          affirmation:
+            "I trust my inner guidance and make choices that align with my authentic self, even if they lead me to unexpected paths.",
+        },
+        {
+          id: 11,
+          title: "Exposing the lessons",
+          category: "Personal Fulfillment",
+          message:
+            "Positive energy drives things as well. Negative energy is the one that drives society...",
+          affirmation:
+            "I release guilt and embrace my journey of self-discovery, learning, and personal transformation.",
+        },
+        {
+          id: 12,
+          title: "Why leave unconditional love?",
+          category: "Personal Transformation",
+          message:
+            "Choosing to reincarnate is not done for the purpose of finding unconditional love...",
+          affirmation:
+            "I embrace my journey of self-discovery and growth, knowing that I possess the power to create my reality.",
+        },
+        {
+          id: 13,
+          title: "Which way is the right way?",
+          category: "Self-Discovery",
+          message:
+            "The universe brings to a soul the things that it wished to experience...",
+          affirmation:
+            "I trust my inner guidance and make choices that align with my authentic self, even if they lead me to unexpected paths.",
+        },
+        {
+          id: 14,
+          title: "Exposing the lessons",
+          category: "Personal Fulfillment",
+          message:
+            "Positive energy drives things as well. Negative energy is the one that drives society...",
+          affirmation:
+            "I release guilt and embrace my journey of self-discovery, learning, and personal transformation.",
         },
       ],
     };
@@ -92,32 +164,55 @@ export default {
     addOneLike() {
       this.likes++;
     },
-    inspireMeAgain() {
-      this.currentLesson = [];
-      const randomIndex = Math.floor(Math.random() * this.lessons.length);
-      this.currentLesson = this.lessons[randomIndex];
-      console.log(this.currentLesson);
-    },
+    // inspireMeAgain() {
+    //   this.currentLesson = [];
+    //   const randomIndex = Math.floor(Math.random() * this.lessons.length);
+    //   this.currentLesson = this.lessons[randomIndex];
+    //   console.log(this.currentLesson);
+    // },
 
-    //missing update the lessondisplay to use selectedcategory to filter the lessons
-    categorySelected(category) {
-      if (category === "") {
-        this.currentLesson = [];
-        const randomIndex = Math.floor(Math.random() * this.lessons.length);
-        this.currentLesson = this.lessons[randomIndex];
-        console.log(this.currentLesson);
+    // //missing update the lessondisplay to use selectedcategory to filter the lessons
+    // categorySelected(category) {
+    //   if (category === "") {
+    //     this.currentLesson = [];
+    //     const randomIndex = Math.floor(Math.random() * this.lessons.length);
+    //     this.currentLesson = this.lessons[randomIndex];
+    //     console.log(this.currentLesson);
+    //   } else {
+    //     const filteredLessons = this.lessons.filter(
+    //       (lesson) => lesson.category === category
+    //     );
+    //     const randomIndex = Math.floor(Math.random() * filteredLessons.length);
+    //     this.currentLesson = filteredLessons[randomIndex];
+    //     console.log(this.currentLesson);
+    //   }
+    // },
+
+    // selectCategory(category) {
+    //   this.selectedCategory = category;
+    // },
+    inspireMe() {
+      if (this.selectedCategory === "") {
+        this.currentLesson = this.getRandomLesson();
       } else {
         const filteredLessons = this.lessons.filter(
-          (lesson) => lesson.category === category
+          (lesson) => lesson.category === this.selectedCategory
         );
-        const randomIndex = Math.floor(Math.random() * filteredLessons.length);
-        this.currentLesson = filteredLessons[randomIndex];
-        console.log(this.currentLesson);
+        this.currentLesson =
+          filteredLessons.length > 0
+            ? this.getRandomLessonFromArray(filteredLessons)
+            : null; // Handle no lessons in the selected category
       }
     },
-
     selectCategory(category) {
       this.selectedCategory = category;
+    },
+    getRandomLessonFromArray(array) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      return array[randomIndex];
+    },
+    getRandomLesson() {
+      return this.getRandomLessonFromArray(this.lessons);
     },
   },
 
@@ -142,5 +237,46 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+form {
+  display: grid;
+  padding: 20px;
+  margin: 20px auto;
+  label {
+    font-size: 20px;
+  }
+  #title {
+    display: grid;
+    border: 3px solid red;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 10px;
+    width: 500px;
+    height: 15px;
+  }
+  #message {
+    display: grid;
+    border: 3px solid red;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 10px;
+    width: 500px;
+    height: 169px;
+  }
+
+  button {
+    display: grid;
+    border: 3px solid red;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  button:hover {
+    background-color: #10878b;
+    color: white;
+    cursor: pointer;
+  }
 }
 </style>
