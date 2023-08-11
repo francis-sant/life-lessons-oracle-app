@@ -8,7 +8,7 @@
         Affirmation of the day: {{ lesson.affirmation }}
       </p>
     </div>
-    <div class="currentlesson" v-else-if="currentLesson || selectedCategory">
+    <div class="currentlesson" v-else-if="currentLesson">
       <h2>{{ currentLesson.title }}</h2>
       <h3>{{ currentLesson.category }}</h3>
       <p>Your Lesson: {{ currentLesson.message }}</p>
@@ -17,9 +17,6 @@
     <div>{{ likes }}</div>
     <div>
       <button data-testid="likeMe" @click="likeMe">Like Me</button>
-    </div>
-    <div>
-      <button data-testid="inspireMe" @click="inspireMe">Inspire Me</button>
     </div>
   </div>
 
@@ -77,13 +74,6 @@ export default {
   },
 
   methods: {
-    inspireMe() {
-      this.started = !this.started;
-      if (this.started) {
-        this.$emit("inspire-from-parent");
-      }
-    },
-
     likeMe() {
       this.$emit("like-from-parent");
       this.likes++;
@@ -91,11 +81,19 @@ export default {
     },
     addNewComment(newComment) {
       this.comments.push(newComment);
-      console.log(this.comments[this.comments.length - 1]);
+      // console.log(this.comments[this.comments.length - 1]);
 
       // for (const [key, value] of Object.entries(newComment)) {
       //   console.log(`${key}: ${value}`);
       // }
+
+      //  addNewComment(id, newComment) {
+      //   if (!this.comments[id]) {
+      //     this.$set(this.comments, id, []);
+      //   } else {
+      //     this.comments[id].push(newComment);
+      //     console.log(this.comments[this.comments.length - 1]);
+      //   }
     },
   },
 };

@@ -1,12 +1,17 @@
 <template>
   <div class="category-selector">
-    <h2>Select a Category:</h2>
-    <select v-model="selectedCategory" @change="categorySelected">
+    <select v-model="selectedCategory">
       <option value="">All Categories</option>
       <option v-for="category in uniqueCategories" :key="category">
         {{ category }}
       </option>
     </select>
+  </div>
+
+  <div>
+    <button data-testid="inspireMe" @click="categorySelected">
+      Inspire Me
+    </button>
   </div>
 </template>
 
@@ -18,6 +23,10 @@ export default {
       type: Array,
       required: true,
     },
+    // currentLesson: {
+    //   type: Object,
+    //   required: true,
+    // },
   },
   data() {
     return {
@@ -39,7 +48,11 @@ export default {
   },
   methods: {
     categorySelected() {
-      this.$emit("category-selected", this.selectedCategory);
+      this.started = !this.started;
+      if (this.started) {
+        this.$emit("category-selected", this.selectedCategory);
+        // console.log(this.selectedCategory);
+      }
     },
   },
 };

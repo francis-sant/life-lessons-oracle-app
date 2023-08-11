@@ -2,16 +2,16 @@
   <h1>Life Lesson Oracle</h1>
 
   <img alt="Vue logo" src="./assets/logo.png" />
-  <LessonCategory :lessons="lessons" @category-selected="selectCategory" />
-
-  <h2>Category Selected: {{ selectedCategory }}</h2>
+  <LessonCategory
+    :lessons="lessons"
+    :current-lesson="currentLesson"
+    @category-selected="inspireMeAgain"
+  />
 
   <LifeLessonDisplay
-    :selected-category="selectedCategory"
     :lesson="randomLesson"
     :current-lesson="currentLesson"
     @like-from-parent="addOneLike"
-    @inspire-from-parent="inspireMeAgain"
   />
 </template>
 
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       likes: 0,
-      currentLesson: null,
+      currentLesson: [],
       selectedCategory: "",
       lessons: [
         {
@@ -164,55 +164,17 @@ export default {
     addOneLike() {
       this.likes++;
     },
-    // inspireMeAgain() {
-    //   this.currentLesson = [];
-    //   const randomIndex = Math.floor(Math.random() * this.lessons.length);
-    //   this.currentLesson = this.lessons[randomIndex];
-    //   console.log(this.currentLesson);
-    // },
 
-    // //missing update the lessondisplay to use selectedcategory to filter the lessons
-    // categorySelected(category) {
-    //   if (category === "") {
-    //     this.currentLesson = [];
-    //     const randomIndex = Math.floor(Math.random() * this.lessons.length);
-    //     this.currentLesson = this.lessons[randomIndex];
-    //     console.log(this.currentLesson);
-    //   } else {
-    //     const filteredLessons = this.lessons.filter(
-    //       (lesson) => lesson.category === category
-    //     );
-    //     const randomIndex = Math.floor(Math.random() * filteredLessons.length);
-    //     this.currentLesson = filteredLessons[randomIndex];
-    //     console.log(this.currentLesson);
-    //   }
-    // },
+    inspireMeAgain(selectedCategory) {
+      const lessonsInCategory = this.lessons.filter(
+        (lesson) => lesson.category === selectedCategory
+      );
 
-    // selectCategory(category) {
-    //   this.selectedCategory = category;
-    // },
-    inspireMe() {
-      if (this.selectedCategory === "") {
-        this.currentLesson = this.getRandomLesson();
-      } else {
-        const filteredLessons = this.lessons.filter(
-          (lesson) => lesson.category === this.selectedCategory
-        );
-        this.currentLesson =
-          filteredLessons.length > 0
-            ? this.getRandomLessonFromArray(filteredLessons)
-            : null; // Handle no lessons in the selected category
-      }
-    },
-    selectCategory(category) {
-      this.selectedCategory = category;
-    },
-    getRandomLessonFromArray(array) {
-      const randomIndex = Math.floor(Math.random() * array.length);
-      return array[randomIndex];
-    },
-    getRandomLesson() {
-      return this.getRandomLessonFromArray(this.lessons);
+      let currentLesson = lessonsInCategory;
+
+      const randomIndex = Math.floor(Math.random() * this.currentLesson.length);
+      console.log(currentLesson);
+      return this.currentLesson[randomIndex];
     },
   },
 
@@ -221,10 +183,6 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.lessons.length);
       return this.lessons[randomIndex];
     },
-    // getRandomLesson() {
-    //   const randomIndex = Math.floor(Math.random() * this.lessons.length);
-    //   return this.lessons[randomIndex];
-    // },
   },
 };
 </script>
@@ -243,9 +201,11 @@ form {
   display: grid;
   padding: 20px;
   margin: 20px auto;
+
   label {
     font-size: 20px;
   }
+
   #title {
     display: grid;
     border: 3px solid red;
@@ -255,6 +215,7 @@ form {
     width: 500px;
     height: 15px;
   }
+
   #message {
     display: grid;
     border: 3px solid red;
