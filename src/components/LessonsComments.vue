@@ -2,19 +2,10 @@
   <div class="myForm">
     <form @submit.prevent="addNewMessage">
       <label for="title">Title:</label>
-      <input
-        v-model="newMessage.title"
-        type="text"
-        id="title"
-        placeholder="My Advice Title"
-      />
+      <input v-model="newMessage.title" type="text" id="title" placeholder="My Advice Title" />
 
       <label for="content">Your Realization:</label>
-      <textarea
-        v-model="newMessage.message"
-        id="message"
-        placeholder="My realization here"
-      ></textarea>
+      <textarea v-model="newMessage.message" id="message" placeholder="My realization here"></textarea>
 
       <button type="submit">Add Message</button>
     </form>
