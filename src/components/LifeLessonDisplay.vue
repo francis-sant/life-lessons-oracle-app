@@ -9,24 +9,10 @@
       </p>
     </div>
     <div class="currentlesson" v-else-if="currentLesson || selectedCategory">
-      <h2>
-        {{ currentLesson ? currentLesson.title : selectedCategory.title }}
-      </h2>
-      <h3>
-        {{ currentLesson ? currentLesson.category : selectedCategory.category }}
-      </h3>
-      <p>
-        Your Lesson:
-        {{ currentLesson ? currentLesson.message : selectedCategory.message }}
-      </p>
-      <p>
-        Affirmation of the day:
-        {{
-          currentLesson
-            ? currentLesson.affirmation
-            : selectedCategory.affirmation
-        }}
-      </p>
+      <h2>{{ currentLesson.title }}</h2>
+      <h3>{{ currentLesson.category }}</h3>
+      <p>Your Lesson: {{ currentLesson.message }}</p>
+      <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
     </div>
     <div>{{ likes }}</div>
     <div>
