@@ -4,13 +4,13 @@
   <img alt="Vue logo" src="./assets/logo.png" />
   <LessonCategory
     :lessons="lessons"
-    :current-lesson="currentLesson"
+    :currentLesson="currentLesson"
     @category-selected="inspireMeAgain"
   />
 
   <LifeLessonDisplay
-    :lesson="randomLesson"
-    :current-lesson="currentLesson"
+    :started="started"
+    :currentLesson="currentLesson"
     @like-from-parent="addOneLike"
   />
 </template>
@@ -18,11 +18,13 @@
 <script>
 import LifeLessonDisplay from "./components/LifeLessonDisplay.vue";
 import LessonCategory from "./components/LessonCategory.vue";
+
 export default {
   name: "App",
   data() {
     return {
       likes: 0,
+      started: false,
       currentLesson: [],
       selectedCategory: "",
       lessons: [
@@ -166,15 +168,22 @@ export default {
     },
 
     inspireMeAgain(selectedCategory) {
-      const lessonsInCategory = this.lessons.filter(
-        (lesson) => lesson.category === selectedCategory
-      );
-
-      let currentLesson = lessonsInCategory;
-
-      const randomIndex = Math.floor(Math.random() * this.currentLesson.length);
-      console.log(currentLesson);
-      return this.currentLesson[randomIndex];
+      if (!selectedCategory) {
+        const randomIndex = Math.floor(Math.random() * this.lessons.length);
+        this.currentLesson = this.lessons[randomIndex]; // Use computed randomLesson
+        this.started = true; // Set started to true after selecting lesson
+      } else {
+        const lessonsInCategory = this.lessons.filter(
+          (lesson) => lesson.category === selectedCategory
+        );
+        this.currentLesson = lessonsInCategory;
+        const randomIndex = Math.floor(
+          Math.random() * this.currentLesson.length
+        );
+        this.currentLesson = this.currentLesson[randomIndex];
+        this.started = true;
+        // console.log(this.currentLesson);
+      }
     },
   },
 

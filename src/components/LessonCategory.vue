@@ -20,8 +20,8 @@ export default {
   name: "CategorySelector",
   props: {
     lessons: {
-      type: Array,
-      required: true,
+      type: Object,
+      required: false,
     },
     // currentLesson: {
     //   type: Object,
@@ -48,11 +48,8 @@ export default {
   },
   methods: {
     categorySelected() {
-      this.started = !this.started;
-      if (this.started) {
-        this.$emit("category-selected", this.selectedCategory);
-        // console.log(this.selectedCategory);
-      }
+      this.$emit("category-selected", this.selectedCategory);
+      // console.log(this.selectedCategory);
     },
   },
 };

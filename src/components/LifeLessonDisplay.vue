@@ -14,7 +14,7 @@
       <p>Your Lesson: {{ currentLesson.message }}</p>
       <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
     </div>
-    <div>{{ likes }}</div>
+    <div class="">{{ likes }}</div>
     <div>
       <button data-testid="likeMe" @click="likeMe">Like Me</button>
     </div>
@@ -52,18 +52,25 @@ export default {
       },
     },
     currentLesson: {
-      type: Object,
+      type: Array,
       required: true,
     },
     newComment: {
       type: Object,
       required: true,
     },
+    started: {
+      type: Boolean,
+      default: false,
+    },
+    messagem: {
+      type: String,
+      required: true,
+    },
   },
 
   data() {
     return {
-      started: false,
       likes: 0,
       comments: [],
     };
