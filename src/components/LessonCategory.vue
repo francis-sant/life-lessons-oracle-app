@@ -23,10 +23,6 @@ export default {
       type: Object,
       required: false,
     },
-    // currentLesson: {
-    //   type: Object,
-    //   required: true,
-    // },
   },
   data() {
     return {

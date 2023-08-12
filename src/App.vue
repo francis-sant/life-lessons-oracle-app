@@ -54,6 +54,7 @@ export default {
             "Life situations don't always align with our dreams. Happiness comes from making the best of what we have. Wisdom is gained through understanding and making conscious choices. Express love for yourself and embrace all possibilities.",
           affirmation:
             "I am grateful for the abundance in my life and open to new opportunities for personal fulfillment.",
+          comments: [],
         },
         {
           id: 4,
@@ -63,6 +64,7 @@ export default {
             "Fill the void left after clearing negative patterns with unconditional love. Wisdom is gained through understanding experiences and choices. Embrace change, examine beliefs, and create your own reality.",
           affirmation:
             "I love and accept myself unconditionally, and I am open to receiving the wisdom that each experience brings.",
+          comments: [],
         },
         {
           id: 5,
@@ -72,6 +74,7 @@ export default {
             "Unresolved trauma from childhood can lead to suppressed emotions. Tears may be releasing hurt, guilt, and relief. Address the memories through regression or deep meditation. Allow yourself to heal and move forward.",
           affirmation:
             "I release emotional burdens and allow healing energy to flow through me, restoring my emotional well-being.",
+          comments: [],
         },
         {
           id: 6,
@@ -81,6 +84,7 @@ export default {
             "Relationships based on fantasies can lead to dissatisfaction. Communication, self-honor, and creative self-expression are key. It's time to honor your true desires and create the life you want, regardless of past choices.",
           affirmation:
             "I trust my inner wisdom and take empowered steps to create a fulfilling life aligned with my true desires.",
+          comments: [],
         },
         {
           id: 7,
@@ -90,6 +94,7 @@ export default {
             "Thoughts and beliefs shape our reality, and they are not predetermined. Use feelings and intuition to make choices, and be mindful of your thought patterns. Connect with your inner wisdom to navigate your life's path.",
           affirmation:
             "I am aware of my thought patterns and emotions, using them to consciously shape my reality.",
+          comments: [],
         },
         {
           id: 8,
@@ -99,6 +104,7 @@ export default {
             "Violent acts and negative experiences are chosen as life lessons in duality. Karma is a belief in retribution, while life lessons offer opportunities for growth and understanding. Every experience contributes to spiritual evolution.",
           affirmation:
             "I embrace every experience as an opportunity for growth and understanding, transcending the limitations of karma.",
+          comments: [],
         },
         {
           id: 9,
@@ -108,6 +114,7 @@ export default {
             "Choosing to reincarnate is not done for the purpose of finding unconditional love...",
           affirmation:
             "I embrace my journey of self-discovery and growth, knowing that I possess the power to create my reality.",
+          comments: [],
         },
         {
           id: 10,
@@ -117,6 +124,7 @@ export default {
             "The universe brings to a soul the things that it wished to experience...",
           affirmation:
             "I trust my inner guidance and make choices that align with my authentic self, even if they lead me to unexpected paths.",
+          comments: [],
         },
         {
           id: 11,
@@ -126,6 +134,7 @@ export default {
             "Positive energy drives things as well. Negative energy is the one that drives society...",
           affirmation:
             "I release guilt and embrace my journey of self-discovery, learning, and personal transformation.",
+          comments: [],
         },
         {
           id: 12,
@@ -135,6 +144,7 @@ export default {
             "Choosing to reincarnate is not done for the purpose of finding unconditional love...",
           affirmation:
             "I embrace my journey of self-discovery and growth, knowing that I possess the power to create my reality.",
+          comments: [],
         },
         {
           id: 13,
@@ -144,6 +154,7 @@ export default {
             "The universe brings to a soul the things that it wished to experience...",
           affirmation:
             "I trust my inner guidance and make choices that align with my authentic self, even if they lead me to unexpected paths.",
+          comments: [],
         },
         {
           id: 14,
@@ -153,6 +164,7 @@ export default {
             "Positive energy drives things as well. Negative energy is the one that drives society...",
           affirmation:
             "I release guilt and embrace my journey of self-discovery, learning, and personal transformation.",
+          comments: [],
         },
       ],
     };
@@ -170,8 +182,8 @@ export default {
     inspireMeAgain(selectedCategory) {
       if (!selectedCategory) {
         const randomIndex = Math.floor(Math.random() * this.lessons.length);
-        this.currentLesson = this.lessons[randomIndex]; // Use computed randomLesson
-        this.started = true; // Set started to true after selecting lesson
+        this.currentLesson = this.lessons[randomIndex];
+        this.started = true;
       } else {
         const lessonsInCategory = this.lessons.filter(
           (lesson) => lesson.category === selectedCategory
@@ -184,13 +196,6 @@ export default {
         this.started = true;
         // console.log(this.currentLesson);
       }
-    },
-  },
-
-  computed: {
-    randomLesson() {
-      const randomIndex = Math.floor(Math.random() * this.lessons.length);
-      return this.lessons[randomIndex];
     },
   },
 };

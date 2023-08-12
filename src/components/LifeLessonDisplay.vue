@@ -39,6 +39,7 @@ export default {
   props: {
     lesson: {
       type: Object,
+      required: true,
       default() {
         return {
           id: 1,
@@ -52,7 +53,7 @@ export default {
       },
     },
     currentLesson: {
-      type: Array,
+      type: Object,
       required: true,
     },
     newComment: {
@@ -101,6 +102,12 @@ export default {
       //     this.comments[id].push(newComment);
       //     console.log(this.comments[this.comments.length - 1]);
       //   }
+    },
+  },
+  computed: {
+    randomLesson() {
+      const randomIndex = Math.floor(Math.random() * this.lessons.length);
+      return this.lessons[randomIndex];
     },
   },
 };
