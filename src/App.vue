@@ -12,6 +12,7 @@
     :lesson="randomLesson"
     :started="started"
     :currentLesson="currentLesson"
+    @update-lesson="updateCurrentLesson"
   />
 </template>
 
@@ -23,7 +24,7 @@ import LessonCategory from "./components/LessonCategory.vue";
 
 export default {
   name: "App",
-  emits: ["like-from-child"],
+
   data() {
     return {
       started: false,
@@ -211,6 +212,7 @@ export default {
           Math.random() * lessonsInCategory.length
         );
         this.currentLesson = lessonsInCategory[randomIndex];
+        console.log(this.currentLesson.comments);
       }
 
       this.started = true;
@@ -222,8 +224,9 @@ export default {
       );
       if (lessonIndex !== -1) {
         this.lessons[lessonIndex] = updatedLesson;
+        this.currentLesson = updatedLesson;
+        this.started = true;
       }
-      updatedLesson = {};
     },
 
     // theLikes() {

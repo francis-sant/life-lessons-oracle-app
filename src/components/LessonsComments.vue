@@ -1,5 +1,5 @@
 <template>
-  <div class="myForm">
+  <div class="myForm" :class="{ started, currentLesson }">
     <form @submit.prevent="addNewMessage">
       <label for="title">Title:</label>
       <input
@@ -30,6 +30,14 @@ export default {
       default() {
         return [];
       },
+    },
+    currentLesson: {
+      type: Object,
+      required: true,
+    },
+    started: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -77,6 +85,13 @@ a {
   color: #42b983;
 }
 
+.myForm {
+  display: none;
+}
+
+.started {
+  display: block;
+}
 // form {
 //   padding: 20px;
 //   display: flex;
