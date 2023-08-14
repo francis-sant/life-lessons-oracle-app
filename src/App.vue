@@ -235,73 +235,317 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+}
 
-  form {
-    display: grid;
-    padding: 20px;
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-image: url("https://hips.hearstapps.com/hmg-prod/images/space-background-with-realistic-nebula-and-royalty-free-illustration-1605710206.?resize=1200:*");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+h1 {
+  margin-top: 20px;
+  color: white;
+}
+
+.category-selector {
+  margin: 20px auto;
+
+  select {
+    border: 3px solid rgb(248, 248, 248);
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
     margin: 20px auto;
 
-    label {
-      font-size: 20px;
-    }
-
-    #title {
-      display: grid;
-      border: 3px solid red;
-      margin: 20px auto;
-      border-radius: 10px;
-      padding: 10px;
-      width: 500px;
-      height: 15px;
-    }
-
-    #message {
-      display: grid;
-      border: 3px solid red;
-      margin: 20px auto;
-      border-radius: 10px;
-      padding: 10px;
-      width: 500px;
-      height: 169px;
-    }
-
-    button {
-      display: grid;
-      border: 3px solid red;
-      border-radius: 10px;
-      padding: 10px;
-      margin: 20px auto;
-    }
-
-    button:hover {
-      background-color: #10878b;
+    option {
+      background-color: #5b0cb4;
       color: white;
-      cursor: pointer;
+    }
+  }
+  button {
+    border: 1px solid rgb(248, 248, 248);
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  button:hover {
+    background-color: #5734f3f8;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px #a473fff8;
+    border: 3px solid white;
+  }
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 446px;
+  height: 100%;
+  background-image: url("https://universe.nasa.gov/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjbmhsY1RGNFkzUjNORGR0Wm13NE5EWXliVFIyYURFMmN6aDNOd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1odmJXVmZkbWxrWlc5ZmNHOXpkR1Z5TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25hRzl0WlY5MmFXUmxiMTl3YjNOMFpYSXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9rZXkifX0=--699aa34eaa466e5be32f9122c5152d2c49214ed8/home_video_poster.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  padding: 20px;
+  max-height: 717px;
+  max-height: 717px;
+  border: 4px solid #5b0cb4;
+}
+
+div.myForm {
+  border: 3px solid #36c3c3;
+  max-width: 400px;
+  width: 90%;
+  margin: 71px auto;
+  border-radius: 20px;
+  color: #fbfbfb;
+
+  h3 {
+    border-bottom: 2px solid #36c3c3;
+  }
+}
+
+form {
+  display: grid;
+  padding: 20px;
+  margin: 20px auto;
+
+  label {
+    font-size: 20px;
+  }
+
+  #title {
+    display: grid;
+    border: 3px solid #36c3c3;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  #message {
+    border: 3px solid #36c3c3;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 10px;
+    width: 330px;
+    height: 203px;
+  }
+
+  button {
+    border: 3px solid #5f6bff;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  button:hover {
+    background-color: #5f6bff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px white;
+    border: 3px solid white;
+  }
+}
+
+.lesson,
+.currentlesson {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #5b0261;
+  border-radius: 66px;
+  padding: 20px;
+  margin: auto;
+  width: 380px;
+  height: 100%;
+  max-height: 578px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #230a3bd9;
+  position: relative;
+  color: white;
+  overflow: hidden; /* To hide any overflowing content */
+
+  ul {
+    list-style: none;
+    width: 288px;
+    bottom: 5%;
+    position: absolute;
+    border: 2px solid #986da7;
+    border-radius: 43px;
+
+    hr {
+      border: 1px dotted #986da7;
+      width: 231px;
+      margin: auto;
     }
   }
 
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 10px;
+    position: absolute;
+    top: 10%;
+  }
+
+  p {
+    text-align: center;
+    margin: 10px 0;
+    border: 1px solid #75328b;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  #likebtn button {
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    border-radius: 40px;
+    padding: 10px;
+    margin: 20px auto;
+  }
+  #likebtn button:hover {
+    background-color: #5b0261;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px white;
+    border: 3px solid white;
+    padding: 10px 20px;
+  }
+}
+#norealization {
+  color: white;
+  padding: 30px;
+  border: 3px solid #f1f2f7;
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.realizations {
+  color: white;
+  padding: 30px;
+  border: 3px solid #f1f2f7;
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 10px;
+
+  h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    border-bottom: 2px solid white;
+  }
+
+  #uniquerealization {
+    line-height: 30px;
+    text-align: left;
+    hr {
+      width: 200px;
+      border: 1px double #f1f2f7;
+      margin: auto;
+    }
+  }
+}
+
+@media (max-width: 400px) {
   .lesson,
   .currentlesson {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    margin: auto;
-    width: 280px;
-    height: auto;
-    min-height: 500px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    width: 380px;
+    min-height: auto;
+    padding: 10px;
+    border-radius: 45px;
+  }
 
-    ul {
-      padding: 0;
-      margin-bottom: 10px;
-      list-style: none;
-    }
+  .currentlesson h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    /* margin-top: 10px; */
+    position: absolute;
+    top: 5%;
+  }
+
+  #message {
+    max-width: 300px;
+  }
+
+  .category-selector button {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 748px) {
+  .lesson,
+  .currentlesson {
+    width: 380px;
+    min-height: auto;
+    padding: 10px;
+    border-radius: 45px;
+  }
+
+  .currentlesson h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    /* margin-top: 10px; */
+    position: absolute;
+    top: 5%;
+  }
+
+  #message {
+    max-width: 300px;
+  }
+
+  .category-selector button {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1021px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  .category-selector {
+    font-size: 20px;
+  }
+  .container {
+    width: 90%;
+    max-width: 446px;
+  }
+  .lesson,
+  .currentlesson {
+    width: 480px;
+    max-height: 700px;
+    padding: 10px;
+    height: 100%;
+    font-size: 20px;
+  }
+
+  .lesson h2,
+  .currentlesson h2 {
+    font-size: 25px;
+  }
+
+  #likeMe button {
+    font-size: 20px;
   }
 }
 </style>

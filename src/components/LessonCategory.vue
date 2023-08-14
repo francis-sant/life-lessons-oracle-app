@@ -6,10 +6,10 @@
         {{ category }}
       </option>
     </select>
-  </div>
 
-  <div>
-    <button @click="categorySelected">Inspire Me</button>
+    <div>
+      <button @click="categorySelected">Inspire Me</button>
+    </div>
   </div>
 </template>
 

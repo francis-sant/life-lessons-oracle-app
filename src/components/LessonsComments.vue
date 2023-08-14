@@ -2,7 +2,7 @@
   <div class="myForm" :class="{ started, currentLesson }">
     <h3>What is your realization with this lesson?</h3>
     <form @submit.prevent="addNewMessage">
-      <label for="title">Title:</label>
+      <label for="title">Title</label>
       <input
         v-model="newMessage.title"
         type="text"
@@ -10,7 +10,7 @@
         placeholder="My Advice Title"
       />
 
-      <label for="content">Your Realization:</label>
+      <label for="content">Your Realization</label>
       <textarea
         v-model="newMessage.message"
         id="message"
@@ -21,11 +21,18 @@
     </form>
   </div>
   <div class="thecomments" :class="{ started, currentLesson }">
-    <div v-if="hasComments(currentLesson)">
+    <div class="realizations" v-if="hasComments(currentLesson)">
       <h3>My Realizations:</h3>
-      <div v-for="comment in currentLesson.comments" :key="comment">
-        <h4>Title: {{ comment.title }}</h4>
-        <h4>My Realization: {{ comment.message }}</h4>
+      <div
+        id="uniquerealization"
+        v-for="comment in currentLesson.comments"
+        :key="comment"
+      >
+        <h4>Title:</h4>
+        <p>{{ comment.title }}</p>
+        <h4>My Realization:</h4>
+        <p>{{ comment.message }}</p>
+        <hr />
       </div>
     </div>
     <div
@@ -33,7 +40,7 @@
       :class="{ started, currentLesson }"
       v-else-if="shouldShowNoComment"
     >
-      <h3>No Realizations Yet</h3>
+      <h3 id="norealization">No Realizations Yet</h3>
     </div>
   </div>
 </template>

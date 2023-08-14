@@ -1,27 +1,33 @@
 <template>
-  <div>
+  <div class="container">
     <div class="lesson" v-if="!started">
-      <ul>
-        <li class="roman">{{ lesson.id }}</li>
-      </ul>
-      <h3>{{ lesson.category }}</h3>
+      <h2>{{ lesson.title }}</h2>
       <p>Your Lesson: {{ lesson.message }}</p>
       <p data-testid="affirmation">
         Affirmation of the day: {{ lesson.affirmation }}
       </p>
-      <h2>{{ lesson.title }}</h2>
-    </div>
-    <div class="currentlesson" v-else-if="currentLesson">
       <ul>
-        <li class="roman">{{ currentLesson.id }}</li>
+        <li class="roman">{{ lesson.id }}</li>
+        <hr />
+        <li>
+          <h3>{{ lesson.category }}</h3>
+        </li>
       </ul>
-      <h3>{{ currentLesson.category }}</h3>
+    </div>
+
+    <div class="currentlesson" v-else-if="currentLesson">
+      <h2>{{ currentLesson.title }}</h2>
       <p>Your Lesson: {{ currentLesson.message }}</p>
       <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
-      <h2>{{ currentLesson.title }}</h2>
-
+      <ul>
+        <li class="roman">{{ currentLesson.id }}</li>
+        <hr />
+        <li>
+          <h3>{{ currentLesson.category }}</h3>
+        </li>
+      </ul>
       <div class="lessonlikes">Likes: {{ currentLesson.likes }}</div>
-      <div>
+      <div id="likebtn">
         <button data-testid="likeMe" @click="likeMe">Like Me</button>
       </div>
     </div>
@@ -85,40 +91,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.lesson {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  margin: auto;
-  width: 280px; /* Adjust this value to your preference */
-  height: auto;
-  min-height: 500px; /* Adjust this value to your preference */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  background-color: white;
-
-  ol {
-    padding: 0;
-    margin-bottom: 10px;
-    list-style: none;
-
-    li.roman {
-      list-style-type: upper-roman;
-    }
-  }
-
-  p {
-    margin: 10px 0;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-    margin-top: 0;
-  }
-}
 .thecomments {
   display: none;
 }

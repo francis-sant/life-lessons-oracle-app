@@ -1,22 +1,71 @@
-// LessonCategorySelector Component
-// The LessonCategorySelector component is placed at the top of the app. It allows users to select a category or choose "Random"
-// to receive an Insight.This component receives life lesson data as an array and emits selections to the parent component.
+import { shallowMount } from "@vue/test-utils";
+import LessonCategory from "@/components/LessonCategory.vue";
 
-// import { shallowMount } from "@vue/test-utils";
-// import LessonLessonDisplay from "@/components/LessonCategory.vue";
+describe("LessonCategory.vue", () => {
+  it("renders the CategorySelector component correctly", () => {
+    const wrapper = shallowMount(LessonCategory, {
+      props: {
+        lessons: [],
+        currentLesson: {},
+      },
+    });
 
-describe("LifeLessonDisplay.vue", () => {
-  it("renders a the LifelessOracle component correctly", () => {
-    // const wrapper = shallowMount(LifeLessonsOracle, {});
+    expect(wrapper.exists()).toBe(true);
   });
 
-  it("displays life lessons category in a list", () => {});
+  it("displays life lesson categories in a select dropdown", () => {
+    const lessons = [
+      { category: "Spiritual Growth" },
+      { category: "Awareness" },
+      { category: "Personal Fulfillment" },
+    ];
 
-  it("does not Display any message while category is been selected", () => {});
+    const wrapper = shallowMount(LessonCategory, {
+      props: {
+        lessons: lessons,
+        currentLesson: {},
+      },
+    });
 
-  it("does display the 'My Insight' button while category is been selected", () => {});
+    const options = wrapper.findAll("option");
+    expect(options.length).toBe(4); // Including the default "All Categories" option
+    expect(options.at(1).text()).toBe("Spiritual Growth");
+    expect(options.at(2).text()).toBe("Awareness");
+    expect(options.at(3).text()).toBe("Personal Fulfillment");
+  });
 
-  it("updates lessons array when Category is selected", () => {});
+  it("emits 'category-selected' event when 'Inspire Me' button is clicked", async () => {
+    const lessons = [];
+    const wrapper = shallowMount(LessonCategory, {
+      props: {
+        lessons: lessons,
+        currentLesson: {},
+      },
+    });
 
-  it("does not display Like, Share, and Save buttons when card is been selected", () => {});
+    const button = wrapper.find("button");
+    await button.trigger("click");
+
+    expect(wrapper.emitted("category-selected")).toBeTruthy();
+  });
+
+  it("emits the selected category when 'Inspire Me' button is clicked", async () => {
+    const lessons = [];
+    const wrapper = shallowMount(LessonCategory, {
+      props: {
+        lessons: lessons,
+        currentLesson: {},
+      },
+    });
+
+    wrapper.setData({ selectedCategory: "Spiritual Growth" });
+    const button = wrapper.find("button");
+    await button.trigger("click");
+
+    expect(wrapper.emitted("category-selected")[0]).toEqual([
+      "Spiritual Growth",
+    ]);
+  });
+
+  // Add more tests as needed
 });
