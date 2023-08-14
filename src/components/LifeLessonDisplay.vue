@@ -19,31 +19,19 @@
       <p>Your Lesson: {{ currentLesson.message }}</p>
       <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
       <h2>{{ currentLesson.title }}</h2>
+
+      <div class="lessonlikes">Likes: {{ currentLesson.likes }}</div>
+      <div>
+        <button data-testid="likeMe" @click="likeMe">Like Me</button>
+      </div>
     </div>
-    <!-- <div class="lessonlikes">Likes: {{ lesson.likes }}</div>
-    <div>
-      <button data-testid="likeMe" @click="likeMe">Like Me</button>
-    </div> -->
   </div>
 
   <LessonsComments
     :started="started"
     :currentLesson="currentLesson"
-    @new-comment="addNewComment"
+    @new-comment="newComment"
   />
-
-  <div class="thecomments" :class="{ started, currentLesson }">
-    <h3>What is your realization with this lesson?</h3>
-    <!-- <div v-if="hasComments(message)"> -->
-    <div v-for="comment in message.comments" :key="comment">
-      <h4>Title: {{ comment.title }}</h4>
-      <h4>My Realization: {{ comment.message }}</h4>
-    </div>
-    <!-- </div> -->
-    <!-- <div v-else>
-      <p>No comments available for this lesson.</p>
-    </div> -->
-  </div>
 </template>
 
 <script>
@@ -51,7 +39,7 @@ import LessonsComments from "./LessonsComments.vue";
 
 export default {
   name: "LifeLessonDisplay",
-  emits: ["update-lesson"],
+  emits: ["update-likes"],
   props: {
     lesson: {
       type: Object,
@@ -70,7 +58,7 @@ export default {
   data() {
     return {
       comments: [],
-      message: this.currentLesson,
+      likes: 0,
     };
   },
 
@@ -79,19 +67,17 @@ export default {
   },
 
   methods: {
-    // likeMe() {
-    //   this.$emit("like-from-parent");
-    // },
-    addNewComment(newComment) {
+    newComment(newComment) {
       const updatedLesson = { ...this.currentLesson };
       updatedLesson.comments.push(newComment);
-      this.$emit("update-lesson", updatedLesson);
+      this.$emit("update-lesson");
       console.log(updatedLesson);
       console.log(newComment);
     },
-
-    hasComments(message) {
-      return message && message.comments && message.comments.length > 0;
+    likeMe() {
+      const updatedLesson = { ...this.currentLesson };
+      updatedLesson.likes = updatedLesson.likes + 1; // Increment the likes count
+      this.$emit("update-likes", updatedLesson.likes); // Emit the updated likes count
     },
   },
 };

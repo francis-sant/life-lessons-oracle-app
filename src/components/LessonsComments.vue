@@ -1,5 +1,6 @@
 <template>
   <div class="myForm" :class="{ started, currentLesson }">
+    <h3>What is your realization with this lesson?</h3>
     <form @submit.prevent="addNewMessage">
       <label for="title">Title:</label>
       <input
@@ -19,11 +20,28 @@
       <button type="submit">Add Message</button>
     </form>
   </div>
+  <div class="thecomments" :class="{ started, currentLesson }">
+    <div v-if="hasComments(currentLesson)">
+      <h3>My Realizations:</h3>
+      <div v-for="comment in currentLesson.comments" :key="comment">
+        <h4>Title: {{ comment.title }}</h4>
+        <h4>My Realization: {{ comment.message }}</h4>
+      </div>
+    </div>
+    <div
+      class="nocomment"
+      :class="{ started, currentLesson }"
+      v-else-if="shouldShowNoComment"
+    >
+      <h3>No Realizations Yet</h3>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "LessonsComments",
+  emits: ["new-comment"],
   props: {
     lesson: {
       type: Array,
@@ -56,10 +74,25 @@ export default {
         this.newMessage.message.trim() !== ""
       ) {
         const newComment = { ...this.newMessage };
-        this.$emit("new-comment", newComment);
+        this.newMessage.id = this.newMessage.id + 1;
         this.newMessage.title = "";
         this.newMessage.message = "";
+        this.$emit("new-comment", newComment);
       }
+    },
+
+    hasComments(currentLesson) {
+      return (
+        currentLesson &&
+        currentLesson.comments &&
+        currentLesson.comments.length > 0
+      );
+    },
+  },
+
+  computed: {
+    shouldShowNoComment() {
+      return !this.hasComments(this.currentLesson);
     },
   },
 };
@@ -89,17 +122,11 @@ a {
   display: none;
 }
 
+.nocomment {
+  display: none;
+}
+
 .started {
   display: block;
 }
-// form {
-//   padding: 20px;
-//   display: flex;
-//   gap: 10px;
-//   justify-content: center;
-//   border: 3px solid red;
-//   max-width: 743px;
-//   margin: 20px auto;
-//   border-radius: 10px;
-// }
 </style>

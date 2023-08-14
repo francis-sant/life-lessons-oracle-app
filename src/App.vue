@@ -11,11 +11,9 @@
     :lesson="randomLesson"
     :started="started"
     :currentLesson="currentLesson"
-    @update-lesson="updateCurrentLesson"
+    v-on:update-likes="updatelikes"
   />
 </template>
-
-<!-- @like-from-child="theLikes" -->
 
 <script>
 import LifeLessonDisplay from "./components/LifeLessonDisplay.vue";
@@ -211,26 +209,15 @@ export default {
           Math.random() * lessonsInCategory.length
         );
         this.currentLesson = lessonsInCategory[randomIndex];
-        console.log(this.currentLesson.comments);
+        // console.log(this.currentLesson.comments);
       }
 
       this.started = true;
     },
 
-    updateCurrentLesson(updatedLesson) {
-      const lessonIndex = this.lessons.findIndex(
-        (lesson) => lesson.id === updatedLesson.id
-      );
-      if (lessonIndex !== -1) {
-        this.lessons[lessonIndex] = updatedLesson;
-        this.currentLesson = updatedLesson;
-        this.started = true;
-      }
+    updatelikes(updatedLikes) {
+      this.currentLesson.likes = updatedLikes;
     },
-
-    // theLikes() {
-    //   this.currentLesson.likes++;
-    // },
   },
   computed: {
     randomLesson() {
