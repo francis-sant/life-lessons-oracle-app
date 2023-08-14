@@ -2,10 +2,9 @@
   <div>
     <div class="lesson" v-if="!started">
       <ul>
-        <li>{{ lesson.id }}</li>
-        <li>{{ lesson.category }}</li>
+        <li class="roman">{{ lesson.id }}</li>
       </ul>
-
+      <h3>{{ lesson.category }}</h3>
       <p>Your Lesson: {{ lesson.message }}</p>
       <p data-testid="affirmation">
         Affirmation of the day: {{ lesson.affirmation }}
@@ -13,10 +12,10 @@
       <h2>{{ lesson.title }}</h2>
     </div>
     <div class="currentlesson" v-else-if="currentLesson">
-      <ol class="roman">
-        <li>{{ currentLesson.id }}</li>
-      </ol>
-      {{ currentLesson.category }}
+      <ul>
+        <li class="roman">{{ currentLesson.id }}</li>
+      </ul>
+      <h3>{{ currentLesson.category }}</h3>
       <p>Your Lesson: {{ currentLesson.message }}</p>
       <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
       <h2>{{ currentLesson.title }}</h2>
@@ -36,10 +35,10 @@
   <div class="thecomments" :class="{ started, currentLesson }">
     <h3>What is your realization with this lesson?</h3>
     <!-- <div v-if="hasComments(message)"> -->
-    <!-- <div v-for="(comment, index) in message.comments" :key="index"> -->
-    <h4>Title: {{ message.title }}</h4>
-    <h4>My Realization: {{ message.message }}</h4>
-    <!-- </div> -->
+    <div v-for="comment in message.comments" :key="comment">
+      <h4>Title: {{ comment.title }}</h4>
+      <h4>My Realization: {{ comment.message }}</h4>
+    </div>
     <!-- </div> -->
     <!-- <div v-else>
       <p>No comments available for this lesson.</p>
@@ -110,8 +109,8 @@ export default {
   padding: 20px;
   margin: auto;
   width: 280px; /* Adjust this value to your preference */
-  height: 400px;
-  max-height: autox; /* Adjust this value to your preference */
+  height: auto;
+  min-height: 500px; /* Adjust this value to your preference */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   background-color: white;
 
@@ -120,7 +119,7 @@ export default {
     margin-bottom: 10px;
     list-style: none;
 
-    li#numero {
+    li.roman {
       list-style-type: upper-roman;
     }
   }

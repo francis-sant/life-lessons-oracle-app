@@ -1,7 +1,6 @@
 <template>
   <h1>Life Lesson Oracle</h1>
 
-  <img alt="Vue logo" src="./assets/logo.png" />
   <LessonCategory
     :lessons="lessons"
     :currentLesson="currentLesson"
@@ -250,49 +249,72 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
 
-form {
-  display: grid;
-  padding: 20px;
-  margin: 20px auto;
-
-  label {
-    font-size: 20px;
-  }
-
-  #title {
+  form {
     display: grid;
-    border: 3px solid red;
+    padding: 20px;
     margin: 20px auto;
-    border-radius: 10px;
-    padding: 10px;
-    width: 500px;
-    height: 15px;
+
+    label {
+      font-size: 20px;
+    }
+
+    #title {
+      display: grid;
+      border: 3px solid red;
+      margin: 20px auto;
+      border-radius: 10px;
+      padding: 10px;
+      width: 500px;
+      height: 15px;
+    }
+
+    #message {
+      display: grid;
+      border: 3px solid red;
+      margin: 20px auto;
+      border-radius: 10px;
+      padding: 10px;
+      width: 500px;
+      height: 169px;
+    }
+
+    button {
+      display: grid;
+      border: 3px solid red;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 20px auto;
+    }
+
+    button:hover {
+      background-color: #10878b;
+      color: white;
+      cursor: pointer;
+    }
   }
 
-  #message {
-    display: grid;
-    border: 3px solid red;
-    margin: 20px auto;
+  .lesson,
+  .currentlesson {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 10px;
-    width: 500px;
-    height: 169px;
-  }
+    padding: 20px;
+    margin: auto;
+    width: 280px;
+    height: auto;
+    min-height: 500px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
 
-  button {
-    display: grid;
-    border: 3px solid red;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 20px auto;
-  }
-
-  button:hover {
-    background-color: #10878b;
-    color: white;
-    cursor: pointer;
+    ul {
+      padding: 0;
+      margin-bottom: 10px;
+      list-style: none;
+    }
   }
 }
 </style>
