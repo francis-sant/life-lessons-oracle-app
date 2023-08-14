@@ -18,11 +18,6 @@
 
       <button type="submit">Add Message</button>
     </form>
-
-    <!-- <div class="myComments">
-      <h2>Title: {{ newMessage.title }}</h2>
-      <h2>My Message: {{ newMessage.message }}</h2>
-    </div> -->
   </div>
 </template>
 

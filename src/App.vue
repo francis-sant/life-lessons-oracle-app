@@ -9,9 +9,10 @@
   />
 
   <LifeLessonDisplay
+    :lesson="randomLesson"
     :started="started"
+    :newComment="newComment"
     :currentLesson="currentLesson"
-    @like-from-parent="addOneLike"
   />
 </template>
 
@@ -27,6 +28,11 @@ export default {
       started: false,
       currentLesson: [],
       selectedCategory: "",
+      newComment: {
+        id: 0,
+        title: " ",
+        message: " ",
+      },
       lessons: [
         {
           id: 1,
@@ -36,6 +42,7 @@ export default {
             "Older souls often choose difficult lives to work on unresolved issues or new challenges. Observing life and guiding others from knowledge is a sacred task. Difficulties in your environment can seem tamer due to your abilities.",
           affirmation:
             "I embrace life's challenges as opportunities for spiritual growth and learning.",
+          comments: [],
         },
         {
           id: 2,
@@ -45,6 +52,7 @@ export default {
             "Autism can provide a unique perception of energies and communication with spirits. It's chosen for various purposes, including exploration of human characteristics and life lessons. Your child's unique perception is a reminder of unexplored possibilities.",
           affirmation:
             "I open my mind to different perspectives, knowing that unique perceptions offer valuable insights.",
+          comments: [],
         },
         {
           id: 3,
@@ -181,21 +189,33 @@ export default {
 
     inspireMeAgain(selectedCategory) {
       if (!selectedCategory) {
-        const randomIndex = Math.floor(Math.random() * this.lessons.length);
-        this.currentLesson = this.lessons[randomIndex];
+        this.currentLesson = this.lessons.length;
         this.started = true;
       } else {
         const lessonsInCategory = this.lessons.filter(
           (lesson) => lesson.category === selectedCategory
         );
-        this.currentLesson = lessonsInCategory;
         const randomIndex = Math.floor(
-          Math.random() * this.currentLesson.length
+          Math.random() * lessonsInCategory.length
         );
-        this.currentLesson = this.currentLesson[randomIndex];
+        this.currentLesson = lessonsInCategory[randomIndex];
         this.started = true;
-        // console.log(this.currentLesson);
       }
+    },
+
+    updateCurrentLesson(updatedLesson) {
+      const lessonIndex = this.lessons.findIndex(
+        (lesson) => lesson.id === updatedLesson.id
+      );
+      if (lessonIndex !== -1) {
+        this.lessons[lessonIndex] = updatedLesson;
+      }
+    },
+  },
+  computed: {
+    randomLesson() {
+      const randomIndex = Math.floor(Math.random() * this.lessons.length);
+      return this.lessons[randomIndex];
     },
   },
 };

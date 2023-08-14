@@ -9,9 +9,7 @@
   </div>
 
   <div>
-    <button data-testid="inspireMe" @click="categorySelected">
-      Inspire Me
-    </button>
+    <button @click="categorySelected">Inspire Me</button>
   </div>
 </template>
 
@@ -21,12 +19,21 @@ export default {
   props: {
     lessons: {
       type: Object,
-      required: false,
+      required: true,
+    },
+    currentLesson: {
+      type: (Array, Object),
+      required: true,
     },
   },
   data() {
     return {
       selectedCategory: "",
+      newComment: {
+        id: " ",
+        title: " ",
+        message: " ",
+      },
     };
   },
   computed: {

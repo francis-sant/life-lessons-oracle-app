@@ -1,18 +1,25 @@
 <template>
   <div>
     <div class="lesson" v-if="!started">
-      <h2>{{ lesson.title }}</h2>
-      <h3>{{ lesson.category }}</h3>
+      <ul>
+        <li>{{ lesson.id }}</li>
+        <li>{{ lesson.category }}</li>
+      </ul>
+
       <p>Your Lesson: {{ lesson.message }}</p>
       <p data-testid="affirmation">
         Affirmation of the day: {{ lesson.affirmation }}
       </p>
+      <h2>{{ lesson.title }}</h2>
     </div>
     <div class="currentlesson" v-else-if="currentLesson">
-      <h2>{{ currentLesson.title }}</h2>
-      <h3>{{ currentLesson.category }}</h3>
+      <ul>
+        <li>{{ currentLesson.id }}</li>
+        <li>{{ currentLesson.category }}</li>
+      </ul>
       <p>Your Lesson: {{ currentLesson.message }}</p>
       <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
+      <h2>{{ currentLesson.title }}</h2>
     </div>
     <div class="">{{ likes }}</div>
     <div>
@@ -24,9 +31,14 @@
 
   <div class="thecomments">
     <h3>What is your realization with this lesson?</h3>
-    <div v-for="(comment, index) in comments" :key="index">
-      <h4>Title: {{ comment.title }}</h4>
-      <h4>My Realization: {{ comment.message }}</h4>
+    <div v-if="hasComments(message)">
+      <div v-for="(comment, index) in message.comments" :key="index">
+        <h4>Title: {{ comment.title }}</h4>
+        <h4>My Realization: {{ comment.message }}</h4>
+      </div>
+    </div>
+    <div v-else>
+      <p>No comments available for this lesson.</p>
     </div>
   </div>
 </template>
@@ -40,23 +52,8 @@ export default {
     lesson: {
       type: Object,
       required: true,
-      default() {
-        return {
-          id: 1,
-          title: "Self-Inquiry",
-          category: "Ramana Maharshi",
-          message:
-            "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
-          affirmation:
-            "I am not my thoughts; I am the silent observer of my mind.",
-        };
-      },
     },
     currentLesson: {
-      type: Object,
-      required: true,
-    },
-    newComment: {
       type: Object,
       required: true,
     },
@@ -64,9 +61,11 @@ export default {
       type: Boolean,
       default: false,
     },
-    messagem: {
-      type: String,
-      required: true,
+    newComment: {
+      type: Object,
+      default() {
+        return {};
+      },
     },
   },
 
@@ -74,6 +73,12 @@ export default {
     return {
       likes: 0,
       comments: [],
+      message: this.currentLesson,
+      newMessage: {
+        id: " ",
+        title: " ",
+        message: " ",
+      },
     };
   },
 
@@ -85,29 +90,18 @@ export default {
     likeMe() {
       this.$emit("like-from-parent");
       this.likes++;
-      //   this.classFull = false;
     },
     addNewComment(newComment) {
-      this.comments.push(newComment);
-      // console.log(this.comments[this.comments.length - 1]);
-
-      // for (const [key, value] of Object.entries(newComment)) {
-      //   console.log(`${key}: ${value}`);
-      // }
-
-      //  addNewComment(id, newComment) {
-      //   if (!this.comments[id]) {
-      //     this.$set(this.comments, id, []);
-      //   } else {
-      //     this.comments[id].push(newComment);
-      //     console.log(this.comments[this.comments.length - 1]);
-      //   }
+      const updatedLesson = { ...this.currentLesson };
+      updatedLesson.comments.push(newComment);
+      this.$emit("update-lesson", updatedLesson);
+      console.log(updatedLesson);
+      // console.log(this.comments);
+      console.log(newComment);
     },
-  },
-  computed: {
-    randomLesson() {
-      const randomIndex = Math.floor(Math.random() * this.lessons.length);
-      return this.lessons[randomIndex];
+
+    hasComments(message) {
+      return message && message.comments && message.comments.length > 0;
     },
   },
 };
