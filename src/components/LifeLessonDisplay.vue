@@ -21,10 +21,10 @@
       <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
       <h2>{{ currentLesson.title }}</h2>
     </div>
-    <div class="">{{ likes }}</div>
+    <!-- <div class="lessonlikes">Likes: {{ lesson.likes }}</div>
     <div>
       <button data-testid="likeMe" @click="likeMe">Like Me</button>
-    </div>
+    </div> -->
   </div>
 
   <LessonsComments @new-comment="addNewComment" />
@@ -63,15 +63,12 @@ export default {
     },
     newComment: {
       type: Object,
-      default() {
-        return {};
-      },
+      required: false,
     },
   },
 
   data() {
     return {
-      likes: 0,
       comments: [],
       message: this.currentLesson,
       newMessage: {
@@ -89,7 +86,6 @@ export default {
   methods: {
     likeMe() {
       this.$emit("like-from-parent");
-      this.likes++;
     },
     addNewComment(newComment) {
       const updatedLesson = { ...this.currentLesson };

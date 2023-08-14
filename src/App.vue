@@ -11,10 +11,11 @@
   <LifeLessonDisplay
     :lesson="randomLesson"
     :started="started"
-    :newComment="newComment"
     :currentLesson="currentLesson"
   />
 </template>
+
+<!-- @like-from-child="theLikes" -->
 
 <script>
 import LifeLessonDisplay from "./components/LifeLessonDisplay.vue";
@@ -22,9 +23,9 @@ import LessonCategory from "./components/LessonCategory.vue";
 
 export default {
   name: "App",
+  emits: ["like-from-child"],
   data() {
     return {
-      likes: 0,
       started: false,
       currentLesson: [],
       selectedCategory: "",
@@ -43,6 +44,7 @@ export default {
           affirmation:
             "I embrace life's challenges as opportunities for spiritual growth and learning.",
           comments: [],
+          likes: 0,
         },
         {
           id: 2,
@@ -53,6 +55,7 @@ export default {
           affirmation:
             "I open my mind to different perspectives, knowing that unique perceptions offer valuable insights.",
           comments: [],
+          likes: 0,
         },
         {
           id: 3,
@@ -63,6 +66,7 @@ export default {
           affirmation:
             "I am grateful for the abundance in my life and open to new opportunities for personal fulfillment.",
           comments: [],
+          likes: 0,
         },
         {
           id: 4,
@@ -73,6 +77,7 @@ export default {
           affirmation:
             "I love and accept myself unconditionally, and I am open to receiving the wisdom that each experience brings.",
           comments: [],
+          likes: 0,
         },
         {
           id: 5,
@@ -83,6 +88,7 @@ export default {
           affirmation:
             "I release emotional burdens and allow healing energy to flow through me, restoring my emotional well-being.",
           comments: [],
+          likes: 0,
         },
         {
           id: 6,
@@ -93,6 +99,7 @@ export default {
           affirmation:
             "I trust my inner wisdom and take empowered steps to create a fulfilling life aligned with my true desires.",
           comments: [],
+          likes: 0,
         },
         {
           id: 7,
@@ -103,6 +110,7 @@ export default {
           affirmation:
             "I am aware of my thought patterns and emotions, using them to consciously shape my reality.",
           comments: [],
+          likes: 0,
         },
         {
           id: 8,
@@ -113,6 +121,7 @@ export default {
           affirmation:
             "I embrace every experience as an opportunity for growth and understanding, transcending the limitations of karma.",
           comments: [],
+          likes: 0,
         },
         {
           id: 9,
@@ -123,6 +132,7 @@ export default {
           affirmation:
             "I embrace my journey of self-discovery and growth, knowing that I possess the power to create my reality.",
           comments: [],
+          likes: 0,
         },
         {
           id: 10,
@@ -133,6 +143,7 @@ export default {
           affirmation:
             "I trust my inner guidance and make choices that align with my authentic self, even if they lead me to unexpected paths.",
           comments: [],
+          likes: 0,
         },
         {
           id: 11,
@@ -143,16 +154,18 @@ export default {
           affirmation:
             "I release guilt and embrace my journey of self-discovery, learning, and personal transformation.",
           comments: [],
+          likes: 0,
         },
         {
           id: 12,
-          title: "Why leave unconditional love?",
+          title: "Why leave ove?",
           category: "Personal Transformation",
           message:
             "Choosing to reincarnate is not done for the purpose of finding unconditional love...",
           affirmation:
             "I embrace my journey of self-discovery and growth, knowing that I possess the power to create my reality.",
           comments: [],
+          likes: 0,
         },
         {
           id: 13,
@@ -163,16 +176,18 @@ export default {
           affirmation:
             "I trust my inner guidance and make choices that align with my authentic self, even if they lead me to unexpected paths.",
           comments: [],
+          likes: 0,
         },
         {
           id: 14,
-          title: "Exposing the lessons",
+          title: "Exposing the fultile",
           category: "Personal Fulfillment",
           message:
             "Positive energy drives things as well. Negative energy is the one that drives society...",
           affirmation:
             "I release guilt and embrace my journey of self-discovery, learning, and personal transformation.",
           comments: [],
+          likes: 0,
         },
       ],
     };
@@ -183,14 +198,11 @@ export default {
   },
 
   methods: {
-    addOneLike() {
-      this.likes++;
-    },
-
     inspireMeAgain(selectedCategory) {
-      if (!selectedCategory) {
-        this.currentLesson = this.lessons.length;
-        this.started = true;
+      this.selectedCategory = "";
+      if (!selectedCategory || selectedCategory === "All Categories") {
+        const randomIndex = Math.floor(Math.random() * this.lessons.length);
+        this.currentLesson = this.lessons[randomIndex];
       } else {
         const lessonsInCategory = this.lessons.filter(
           (lesson) => lesson.category === selectedCategory
@@ -199,8 +211,9 @@ export default {
           Math.random() * lessonsInCategory.length
         );
         this.currentLesson = lessonsInCategory[randomIndex];
-        this.started = true;
       }
+
+      this.started = true;
     },
 
     updateCurrentLesson(updatedLesson) {
@@ -210,7 +223,12 @@ export default {
       if (lessonIndex !== -1) {
         this.lessons[lessonIndex] = updatedLesson;
       }
+      updatedLesson = {};
     },
+
+    // theLikes() {
+    //   this.currentLesson.likes++;
+    // },
   },
   computed: {
     randomLesson() {

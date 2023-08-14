@@ -16,6 +16,7 @@
 <script>
 export default {
   name: "CategorySelector",
+  emits: ["category-selected"],
   props: {
     lessons: {
       type: Object,
@@ -52,7 +53,6 @@ export default {
   methods: {
     categorySelected() {
       this.$emit("category-selected", this.selectedCategory);
-      // console.log(this.selectedCategory);
     },
   },
 };
