@@ -32,17 +32,17 @@ To launch the Life Lessons Oracle app, follow these steps:
 
 The app consists of the following main components:
 
-### LifeLessonsOracle Component
+### LifeLessonsOracle / APP.Vue
 
 The `LifeLessonsOracle` component serves as the main app component that integrates other components and manages the overall functionality.
 
 ### LessonCategorySelector Component
 
-The `LessonCategorySelector` component is placed at the top of the app. It allows users to select a category or choose "Random" to receive an Insight. This component receives life lesson data as an array and emits selections to the parent component.
+The `LessonCategorySelector` component is placed at the top of the app. It allows users to select a category or choose "All Categories" to receive an Insight. This component receives life lesson data as an array and emits selections to the parent component.
 
 ### LessonDisplay Component
 
-The 'LessonDisplay' component is responsible for displaying the lessons. It receives the lessons array and displays one Random lesson from the selected category. It also displays the buttons "Like", "Save", and "Comment" for the user to interact with the lesson. The user can save a new advice lesson and it will be displayed in the "Friendly Category". The user can also like the lesson and the number of likes will be displayed. 
+The 'LessonDisplay' component is responsible for displaying the lessons. It receives the lessons array and displays one Random lesson from the selected category already from the start. It also displays the buttons "Comment" for the user to interact with the lesson. The user can save a  realization about that particular advice.
 
 ## Usage
 
