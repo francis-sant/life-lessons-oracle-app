@@ -1,4 +1,5 @@
 <template>
+  <h2>Life has something to tell you, ask for your Inspiration:</h2>
   <div class="container">
     <div class="lesson" v-if="!started">
       <h2>{{ lesson.title }}</h2>
@@ -98,6 +99,7 @@ export default {
 .thecomments {
   display: none;
 }
+
 .started {
   display: block;
 }

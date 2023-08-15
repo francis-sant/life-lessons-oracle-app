@@ -264,6 +264,13 @@ h1 {
   font-family: "Comfortaa", cursive;
 }
 
+h2 {
+  color: white;
+  font-size: 30px;
+  width: 507px;
+  margin: 20px auto;
+}
+
 .category-selector {
   margin: 20px auto;
 
@@ -281,6 +288,7 @@ h1 {
       color: white;
     }
   }
+
   button {
     font-size: 20px;
     border: 1px solid rgb(248, 248, 248);
@@ -299,6 +307,7 @@ h1 {
     border: 3px solid white;
   }
 }
+
 .container {
   display: flex;
   align-items: center;
@@ -394,7 +403,8 @@ form {
   background-color: #230a3bd9;
   position: relative;
   color: white;
-  overflow: hidden; /* To hide any overflowing content */
+  overflow: hidden;
+  /* To hide any overflowing content */
 
   ul {
     list-style: none;
@@ -440,6 +450,7 @@ form {
     margin: 20px auto;
     font-size: 18px;
   }
+
   #likebtn button:hover {
     background-color: #5b0261;
     font-weight: bold;
@@ -449,6 +460,7 @@ form {
     padding: 10px 20px;
   }
 }
+
 #norealization {
   color: white;
   padding: 30px;
@@ -476,6 +488,7 @@ form {
   #uniquerealization {
     line-height: 30px;
     text-align: left;
+
     hr {
       width: 200px;
       border: 1px double #f1f2f7;
@@ -496,6 +509,7 @@ form {
   .category-selector {
     font-size: 20px;
   }
+
   .lesson,
   .currentlesson {
     width: 380px;
@@ -548,6 +562,7 @@ form {
     max-width: 850px;
     max-height: 850px;
   }
+
   .lesson,
   .currentlesson {
     width: 100%;
