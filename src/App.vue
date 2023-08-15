@@ -1,18 +1,10 @@
 <template>
   <h1>Life Lesson Oracle</h1>
 
-  <LessonCategory
-    :lessons="lessons"
-    :currentLesson="currentLesson"
-    @category-selected="inspireMeAgain"
-  />
+  <LessonCategory :lessons="lessons" :currentLesson="currentLesson" @category-selected="inspireMeAgain" />
 
-  <LifeLessonDisplay
-    :lesson="randomLesson"
-    :started="started"
-    :currentLesson="currentLesson"
-    v-on:update-likes="updatelikes"
-  />
+  <LifeLessonDisplay :lesson="randomLesson" :started="started" :currentLesson="currentLesson"
+    v-on:update-likes="updatelikes" />
 </template>
 
 <script>
@@ -269,6 +261,7 @@ h2 {
   font-size: 30px;
   width: 507px;
   margin: 20px auto;
+  max-width: 90%;
 }
 
 .category-selector {
