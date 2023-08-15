@@ -229,6 +229,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap");
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -248,19 +250,25 @@ body {
   height: 100vh;
   background-image: url("https://hips.hearstapps.com/hmg-prod/images/space-background-with-realistic-nebula-and-royalty-free-illustration-1605710206.?resize=1200:*");
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  padding: 80px 0;
+  font-family: "Comfortaa", cursive;
 }
 
 h1 {
-  margin-top: 20px;
+  margin-top: 30px;
   color: white;
+  font-size: 40px;
+  font-family: "Comfortaa", cursive;
 }
 
 .category-selector {
   margin: 20px auto;
 
   select {
+    font-size: 20px;
     border: 3px solid rgb(248, 248, 248);
     background-color: transparent;
     color: white;
@@ -274,6 +282,7 @@ h1 {
     }
   }
   button {
+    font-size: 20px;
     border: 1px solid rgb(248, 248, 248);
     background-color: transparent;
     color: white;
@@ -297,14 +306,13 @@ h1 {
   margin: auto;
   width: 446px;
   height: 100%;
-  background-image: url("https://universe.nasa.gov/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjbmhsY1RGNFkzUjNORGR0Wm13NE5EWXliVFIyYURFMmN6aDNOd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1odmJXVmZkbWxrWlc5ZmNHOXpkR1Z5TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25hRzl0WlY5MmFXUmxiMTl3YjNOMFpYSXVhbkJuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJUGFXMWhaMlV2YW5CbFp3WTdCbFE2RVhObGNuWnBZMlZmYm1GdFpUb0tiRzlqWVd3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9rZXkifX0=--699aa34eaa466e5be32f9122c5152d2c49214ed8/home_video_poster.jpg");
+  background-image: url("https://i.pinimg.com/originals/d8/b1/4c/d8b14c499edc29ffd89a78d0fd6055f6.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px;
   padding: 20px;
-  max-height: 717px;
-  max-height: 717px;
+  max-height: 800px;
   border: 4px solid #5b0cb4;
 }
 
@@ -322,16 +330,16 @@ div.myForm {
 }
 
 form {
-  display: grid;
   padding: 20px;
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
 
   label {
     font-size: 20px;
   }
 
   #title {
-    display: grid;
     border: 3px solid #36c3c3;
     margin: 20px auto;
     border-radius: 10px;
@@ -343,7 +351,8 @@ form {
     margin: 20px auto;
     border-radius: 10px;
     padding: 10px;
-    width: 330px;
+    width: 90%;
+    max-width: 330px;
     height: 203px;
   }
 
@@ -354,6 +363,7 @@ form {
     border-radius: 10px;
     padding: 10px;
     margin: 20px auto;
+    font-size: 18px;
   }
 
   button:hover {
@@ -377,7 +387,7 @@ form {
   margin: auto;
   width: 380px;
   height: 100%;
-  max-height: 578px;
+  max-height: 700px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   background-color: #230a3bd9;
   position: relative;
@@ -386,28 +396,28 @@ form {
 
   ul {
     list-style: none;
-    width: 288px;
+    width: 90%;
     bottom: 5%;
     position: absolute;
     border: 2px solid #986da7;
     border-radius: 43px;
 
     hr {
-      border: 1px dotted #986da7;
+      border: 1px solid #986da7;
       width: 231px;
       margin: auto;
     }
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 30px;
     text-align: center;
-    margin-top: 10px;
     position: absolute;
-    top: 10%;
+    top: 7%;
   }
 
   p {
+    font-size: 18px;
     text-align: center;
     margin: 10px 0;
     border: 1px solid #75328b;
@@ -415,13 +425,18 @@ form {
     padding: 10px;
   }
 
+  .lessonlikes {
+    font-size: 20px;
+  }
+
   #likebtn button {
     border: 3px solid white;
-    background-color: transparent;
+    background-color: rgb(197, 5, 188);
     color: white;
     border-radius: 40px;
     padding: 10px;
     margin: 20px auto;
+    font-size: 18px;
   }
   #likebtn button:hover {
     background-color: #5b0261;
@@ -448,6 +463,7 @@ form {
   width: 300px;
   margin: 20px auto;
   border-radius: 10px;
+  font-size: 18px;
 
   h3 {
     margin: 10px 0;
@@ -466,82 +482,72 @@ form {
   }
 }
 
-@media (max-width: 400px) {
-  .lesson,
-  .currentlesson {
-    width: 380px;
-    min-height: auto;
-    padding: 10px;
-    border-radius: 45px;
-  }
-
-  .currentlesson h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    /* margin-top: 10px; */
-    position: absolute;
-    top: 5%;
-  }
-
-  #message {
-    max-width: 300px;
-  }
-
-  .category-selector button {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 748px) {
-  .lesson,
-  .currentlesson {
-    width: 380px;
-    min-height: auto;
-    padding: 10px;
-    border-radius: 45px;
-  }
-
-  .currentlesson h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    /* margin-top: 10px; */
-    position: absolute;
-    top: 5%;
-  }
-
-  #message {
-    max-width: 300px;
-  }
-
-  .category-selector button {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 1021px) {
+@media (min-width: 400px) and (max-width: 992px) {
   h1 {
-    font-size: 40px;
+    font-size: 35px;
   }
 
   .category-selector {
     font-size: 20px;
   }
+  .lesson,
+  .currentlesson {
+    width: 380px;
+    min-height: auto;
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  .currentlesson h2 {
+    font-size: 20px;
+    text-align: center;
+    /* margin-top: 10px; */
+    position: absolute;
+    top: 5%;
+  }
+
+  .lesson h2,
+  .currentlesson h2 {
+    font-size: 25px;
+  }
+
+  .lesson p,
+  .currentlesson p {
+    font-size: 18px;
+  }
+
+  #message {
+    max-width: 300px;
+  }
+
+  .category-selector button {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 993px) {
+  h1 {
+    font-size: 35px;
+  }
+
   .container {
     width: 90%;
     max-width: 446px;
   }
   .lesson,
   .currentlesson {
-    width: 480px;
+    width: 100%;
     max-height: 700px;
     padding: 10px;
     height: 100%;
     font-size: 20px;
+    border-radius: 15px;
   }
 
-  .lesson h2,
   .currentlesson h2 {
-    font-size: 25px;
+    text-align: center;
+    position: absolute;
+    top: 2%;
   }
 
   #likeMe button {

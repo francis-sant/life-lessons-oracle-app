@@ -2,9 +2,11 @@
   <div class="container">
     <div class="lesson" v-if="!started">
       <h2>{{ lesson.title }}</h2>
-      <p>Your Lesson: {{ lesson.message }}</p>
+      <h3>Your Lesson:</h3>
+      <p>{{ lesson.message }}</p>
+      <h3>Affirmation of the day:</h3>
       <p data-testid="affirmation">
-        Affirmation of the day: {{ lesson.affirmation }}
+        {{ lesson.affirmation }}
       </p>
       <ul>
         <li class="roman">{{ lesson.id }}</li>
@@ -17,8 +19,10 @@
 
     <div class="currentlesson" v-else-if="currentLesson">
       <h2>{{ currentLesson.title }}</h2>
-      <p>Your Lesson: {{ currentLesson.message }}</p>
-      <p>Affirmation of the day: {{ currentLesson.affirmation }}</p>
+      <h3>Your Lesson:</h3>
+      <p>{{ currentLesson.message }}</p>
+      <h3>Affirmation of the day:</h3>
+      <p>{{ currentLesson.affirmation }}</p>
       <ul>
         <li class="roman">{{ currentLesson.id }}</li>
         <hr />
