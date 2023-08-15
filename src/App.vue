@@ -304,7 +304,9 @@ h1 {
   align-items: center;
   justify-content: center;
   margin: auto;
-  width: 446px;
+  // height: 850px;
+  max-width: 690px;
+  max-height: 850px;
   height: 100%;
   background-image: url("https://i.pinimg.com/originals/d8/b1/4c/d8b14c499edc29ffd89a78d0fd6055f6.jpg");
   background-position: center;
@@ -312,7 +314,7 @@ h1 {
   background-size: cover;
   border-radius: 10px;
   padding: 20px;
-  max-height: 800px;
+
   border: 4px solid #5b0cb4;
 }
 
@@ -385,9 +387,9 @@ form {
   border-radius: 66px;
   padding: 20px;
   margin: auto;
-  width: 380px;
-  height: 100%;
-  max-height: 700px;
+  width: 100%;
+  height: 785px;
+  max-height: 850px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   background-color: #230a3bd9;
   position: relative;
@@ -482,9 +484,13 @@ form {
   }
 }
 
-@media (min-width: 400px) and (max-width: 992px) {
+@media (min-width: 375px) and (max-width: 992px) {
   h1 {
     font-size: 35px;
+  }
+
+  .container {
+    width: 90%;
   }
 
   .category-selector {
@@ -516,6 +522,12 @@ form {
     font-size: 18px;
   }
 
+  .lesson ul,
+  .currentlesson ul {
+    font-size: 15px;
+    bottom: 2%;
+  }
+
   #message {
     max-width: 300px;
   }
@@ -532,12 +544,14 @@ form {
 
   .container {
     width: 90%;
-    max-width: 446px;
+    height: 850px;
+    max-width: 850px;
+    max-height: 850px;
   }
   .lesson,
   .currentlesson {
     width: 100%;
-    max-height: 700px;
+    height: 800px;
     padding: 10px;
     height: 100%;
     font-size: 20px;
