@@ -29,9 +29,9 @@
         :key="comment"
       >
         <h4>Title:</h4>
-        <p data-testid='comenttitle'>{{ comment.title }}</p>
+        <p data-testid="comenttitle">{{ comment.title }}</p>
         <h4>My Realization:</h4>
-        <p data-testid='comentmessage'>{{ comment.message }}</p>
+        <p data-testid="comentmessage">{{ comment.message }}</p>
         <hr />
       </div>
     </div>

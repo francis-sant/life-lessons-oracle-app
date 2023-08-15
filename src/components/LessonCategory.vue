@@ -8,7 +8,9 @@
     </select>
 
     <div>
-      <button data-testid="inspireMe" @click="categorySelected">Inspire Me</button>
+      <button data-testid="inspireMe" @click="categorySelected">
+        Inspire Me
+      </button>
     </div>
   </div>
 </template>

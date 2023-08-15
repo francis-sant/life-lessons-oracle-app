@@ -29,14 +29,11 @@ describe("LessonCategory.vue", () => {
     });
 
     const options = wrapper.findAll("option");
-    expect(options.length).toBe(4); 
+    expect(options.length).toBe(4);
     expect(options.at(1).text()).toBe("Spiritual Growth");
     expect(options.at(2).text()).toBe("Awareness");
     expect(options.at(3).text()).toBe("Personal Fulfillment");
   });
-
-
-
 
   it("emits 'category-selected' event when 'Inspire Me' button is clicked", async () => {
     const lessons = [];
@@ -70,7 +67,4 @@ describe("LessonCategory.vue", () => {
       "Spiritual Growth",
     ]);
   });
-
-
-
 });

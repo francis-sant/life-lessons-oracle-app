@@ -10,14 +10,19 @@ describe("App.vue", () => {
   it("passes props to LessonCategory and LifeLessonDisplay", () => {
     const wrapper = shallowMount(App);
     const lessonCategory = wrapper.findComponent({ name: "LessonCategory" });
-    const lifeLessonDisplay = wrapper.findComponent({ name: "LifeLessonDisplay" });
+    const lifeLessonDisplay = wrapper.findComponent({
+      name: "LifeLessonDisplay",
+    });
 
     expect(lessonCategory.props("lessons")).toEqual(wrapper.vm.lessons);
-    expect(lessonCategory.props("currentLesson")).toEqual(wrapper.vm.currentLesson);
+    expect(lessonCategory.props("currentLesson")).toEqual(
+      wrapper.vm.currentLesson
+    );
 
     expect(lifeLessonDisplay.props("lesson")).toEqual(wrapper.vm.randomLesson);
     expect(lifeLessonDisplay.props("started")).toEqual(wrapper.vm.started);
-    expect(lifeLessonDisplay.props("currentLesson")).toEqual(wrapper.vm.currentLesson);
+    expect(lifeLessonDisplay.props("currentLesson")).toEqual(
+      wrapper.vm.currentLesson
+    );
   });
-
 });

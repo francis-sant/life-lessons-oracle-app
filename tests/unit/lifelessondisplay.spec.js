@@ -1,7 +1,6 @@
-
 import { shallowMount } from "@vue/test-utils";
 import LifeLessonDisplay from "@/components/LifeLessonDisplay.vue";
-import LessonCategory from "@/components/LessonCategory.vue";
+// import LessonCategory from "@/components/LessonCategory.vue";
 
 describe("LifeLessonDisplay.vue", () => {
   it("does receive props lesson and currentLesson ", () => {
@@ -58,8 +57,6 @@ describe("LifeLessonDisplay.vue", () => {
     );
     expect(wrapper.find(".lesson li.roman").text()).toBe(String(lesson.id));
     expect(wrapper.find(".lesson li h3").text()).toBe(lesson.category);
-   
-   
   });
 
   //with ABUG
@@ -108,22 +105,21 @@ describe("LifeLessonDisplay.vue", () => {
   //    // Ensure the button is visible and exists
   //    const inspireMeButton = wrapper.find("[data-testid='inspireMe']");
   //    expect(inspireMeButton.exists()).toBe(true);
- 
+
   //    // Simulate clicking the "Inspire Me" button
   //    await inspireMeButton.trigger("click");
- 
+
   //    // Wait for the DOM update after the button click
   //    await wrapper.vm.$nextTick();
- 
+
   //    // Check if the component is in the "currentlesson" state
   //    expect(wrapper.vm.started).toBe(true);
- 
+
   //    // Click the button again to toggle back
   //    await inspireMeButton.trigger("click");
   //    await wrapper.vm.$nextTick();
- 
+
   //    // Check if the component is back in the "lesson" state
   //    expect(wrapper.vm.started).toBe(false);
   //  });
 });
-
