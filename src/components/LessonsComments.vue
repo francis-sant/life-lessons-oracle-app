@@ -41,7 +41,7 @@
         placeholder="My realization here"
       ></textarea>
 
-      <button type="submit">Add Message</button>
+      <button data-testid="submitbtn" type="submit">Add Message</button>
     </form>
   </div>
 </template>

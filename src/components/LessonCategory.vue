@@ -42,13 +42,11 @@ export default {
   computed: {
     uniqueCategories() {
       const uniqueCategories = [];
-
       for (let lesson of this.lessons) {
         if (!uniqueCategories.includes(lesson.category)) {
           uniqueCategories.push(lesson.category);
         }
       }
-
       return uniqueCategories;
     },
   },
