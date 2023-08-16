@@ -153,7 +153,7 @@ a {
   padding: 4px 8px;
   cursor: pointer;
   border-radius: 10px;
-  margin-left: 219px;
+  margin-left: 252px;
   position: relative;
   top: -10px;
 }
