@@ -1,10 +1,18 @@
 <template>
   <h1>Life Lesson Oracle</h1>
 
-  <LessonCategory :lessons="lessons" :currentLesson="currentLesson" @category-selected="inspireMeAgain" />
+  <LessonCategory
+    :lessons="lessons"
+    :currentLesson="currentLesson"
+    @category-selected="inspireMeAgain"
+  />
 
-  <LifeLessonDisplay :lesson="randomLesson" :started="started" :currentLesson="currentLesson"
-    v-on:update-likes="updatelikes" />
+  <LifeLessonDisplay
+    :lesson="randomLesson"
+    :started="started"
+    :currentLesson="currentLesson"
+    v-on:update-likes="updatelikes"
+  />
 </template>
 
 <script>
@@ -442,15 +450,18 @@ form {
     padding: 10px;
     margin: 20px auto;
     font-size: 18px;
+    cursor: pointer;
   }
 
-  #likebtn button:hover {
-    background-color: #5b0261;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 6px white;
+  #likebtn .liked {
     border: 3px solid white;
-    padding: 10px 20px;
+    background-color: rgb(86, 2, 196);
+    color: white;
+    border-radius: 40px;
+    padding: 10px;
+    margin: 20px auto;
+    font-size: 18px;
+    cursor: pointer;
   }
 }
 
@@ -464,14 +475,6 @@ form {
 }
 
 .realizations {
-  color: white;
-  padding: 30px;
-  border: 3px solid #f1f2f7;
-  width: 300px;
-  margin: 20px auto;
-  border-radius: 10px;
-  font-size: 18px;
-
   h3 {
     margin: 10px 0;
     font-size: 20px;
@@ -479,14 +482,15 @@ form {
   }
 
   #uniquerealization {
+    color: white;
+    padding: 12px;
+    border: 3px solid #f1f2f7;
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 10px;
+    font-size: 18px;
     line-height: 30px;
     text-align: left;
-
-    hr {
-      width: 200px;
-      border: 1px double #f1f2f7;
-      margin: auto;
-    }
   }
 }
 

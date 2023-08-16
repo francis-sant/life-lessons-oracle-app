@@ -1,4 +1,28 @@
 <template>
+  <div class="thecomments" :class="{ started, currentLesson }">
+    <div class="realizations" v-if="hasComments(currentLesson)">
+      <div
+        id="uniquerealization"
+        v-for="comment in currentLesson.comments"
+        :key="comment.id"
+        class="comment-item"
+      >
+        <button @click="deleteCommentId(comment.id)">X</button>
+        <h4>Title:</h4>
+        <p data-testid="comenttitle">{{ comment.title }}</p>
+        <h4>My Realization:</h4>
+        <p data-testid="comentmessage">{{ comment.message }}</p>
+      </div>
+    </div>
+    <div
+      class="nocomment"
+      :class="{ started, currentLesson }"
+      v-else-if="shouldShowNoComment"
+    >
+      <h3 id="norealization">No Realizations Yet</h3>
+    </div>
+  </div>
+
   <div class="myForm" :class="{ started, currentLesson }">
     <h3>What is your realization with this lesson?</h3>
     <form @submit.prevent="addNewMessage">
@@ -20,35 +44,12 @@
       <button type="submit">Add Message</button>
     </form>
   </div>
-  <div class="thecomments" :class="{ started, currentLesson }">
-    <div class="realizations" v-if="hasComments(currentLesson)">
-      <h3>My Realizations:</h3>
-      <div
-        id="uniquerealization"
-        v-for="comment in currentLesson.comments"
-        :key="comment"
-      >
-        <h4>Title:</h4>
-        <p data-testid="comenttitle">{{ comment.title }}</p>
-        <h4>My Realization:</h4>
-        <p data-testid="comentmessage">{{ comment.message }}</p>
-        <hr />
-      </div>
-    </div>
-    <div
-      class="nocomment"
-      :class="{ started, currentLesson }"
-      v-else-if="shouldShowNoComment"
-    >
-      <h3 id="norealization">No Realizations Yet</h3>
-    </div>
-  </div>
 </template>
 
 <script>
 export default {
   name: "LessonsComments",
-  emits: ["new-comment"],
+  emits: ["new-comment", "delete-comment"],
   props: {
     lesson: {
       type: Array,
@@ -84,7 +85,7 @@ export default {
         this.newMessage.id = this.newMessage.id + 1;
         this.newMessage.title = "";
         this.newMessage.message = "";
-        this.$emit("new-comment", newComment);
+        this.$emit("new-comment", newComment); // Emit the new comment and its ID
       }
     },
 
@@ -94,6 +95,10 @@ export default {
         currentLesson.comments &&
         currentLesson.comments.length > 0
       );
+    },
+
+    deleteCommentId(commentId) {
+      this.$emit("delete-comment", commentId);
     },
   },
 
@@ -135,5 +140,21 @@ a {
 
 .started {
   display: block;
+}
+
+.realizations {
+  position: relative;
+}
+
+.realizations button {
+  background-color: #ce0875;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: 219px;
+  position: relative;
+  top: -10px;
 }
 </style>

@@ -33,7 +33,12 @@
       </ul>
       <div class="lessonlikes">Likes: {{ currentLesson.likes }}</div>
       <div id="likebtn">
-        <button data-testid="likeMe" @click="likeMe">Like Me</button>
+        <button v-if="!liked" data-testid="likeMe" @click="likeMe">
+          Like Me
+        </button>
+        <button v-else data-testid="likeMe" :class="{ liked }" @click="likeMe">
+          UnLike Me
+        </button>
       </div>
     </div>
   </div>
@@ -42,6 +47,7 @@
     :started="started"
     :currentLesson="currentLesson"
     @new-comment="newComment"
+    @delete-comment="deleteComment"
   />
 </template>
 
@@ -68,8 +74,8 @@ export default {
 
   data() {
     return {
-      comments: [],
       likes: 0,
+      liked: false,
     };
   },
 
@@ -81,14 +87,33 @@ export default {
     newComment(newComment) {
       const updatedLesson = { ...this.currentLesson };
       updatedLesson.comments.push(newComment);
-      this.$emit("update-lesson");
       console.log(updatedLesson);
       console.log(newComment);
     },
+
+    deleteComment(commentId) {
+      const updatedLesson = { ...this.currentLesson };
+
+      if (updatedLesson.comments) {
+        const commentIndex = updatedLesson.comments.findIndex(
+          (comment) => comment.id === commentId
+        );
+
+        if (commentIndex !== -1) {
+          updatedLesson.comments.splice(commentIndex, 1);
+        }
+      }
+    },
     likeMe() {
       const updatedLesson = { ...this.currentLesson };
-      updatedLesson.likes = updatedLesson.likes + 1; // Increment the likes count
-      this.$emit("update-likes", updatedLesson.likes); // Emit the updated likes count
+      if (updatedLesson.likes === 0) {
+        updatedLesson.likes = updatedLesson.likes + 1;
+        this.liked = true;
+      } else {
+        updatedLesson.likes = updatedLesson.likes - 1;
+        this.liked = false;
+      }
+      this.$emit("update-likes", updatedLesson.likes);
     },
   },
 };
