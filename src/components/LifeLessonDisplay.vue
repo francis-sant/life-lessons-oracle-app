@@ -23,7 +23,7 @@
       <h3>Your Lesson:</h3>
       <p>{{ currentLesson.message }}</p>
       <h3>Affirmation of the day:</h3>
-      <p>{{ currentLesson.affirmation }}</p>
+      <p data-testid="claffirmation">{{ currentLesson.affirmation }}</p>
       <ul>
         <li class="roman">{{ currentLesson.id }}</li>
         <hr />
@@ -33,10 +33,15 @@
       </ul>
       <div class="lessonlikes">Likes: {{ currentLesson.likes }}</div>
       <div id="likebtn">
-        <button v-if="!liked" data-testid="likeMe" @click="likeMe">
+        <button
+          v-if="!liked"
+          :class="{ unliked }"
+          data-testid="likeMe"
+          @click="likeMe"
+        >
           Like Me
         </button>
-        <button v-else data-testid="likeMe" :class="{ liked }" @click="likeMe">
+        <button v-else data-testid="unlikeMe" :class="{ liked }" @click="likeMe">
           UnLike Me
         </button>
       </div>
@@ -87,8 +92,8 @@ export default {
     newComment(newComment) {
       const updatedLesson = { ...this.currentLesson };
       updatedLesson.comments.push(newComment);
-      console.log(updatedLesson);
-      console.log(newComment);
+      // console.log(updatedLesson);
+      // console.log(newComment);
     },
 
     deleteComment(commentId) {
@@ -127,5 +132,9 @@ export default {
 
 .started {
   display: block;
+}
+
+.unliked {
+  display: none;
 }
 </style>

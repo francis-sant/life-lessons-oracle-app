@@ -66,4 +66,40 @@ describe("LessonCategory.vue", () => {
       "Spiritual Growth",
     ]);
   });
+
+  it("computes the uniquecartegories", () => {
+    const lessons = [
+      { id: 1, category: "Spiritual Growth" },
+      { id: 2, category: "Awareness" },
+      { id: 3, category: "Personal Fulfillment" },
+    ];
+
+    const wrapper = shallowMount(LessonCategory, {
+      props: {
+        lessons: lessons,
+        currentLesson: lessons,
+      },
+    });
+
+    const uniquecategories = wrapper.vm.uniqueCategories;
+
+    expect(uniquecategories).toEqual([
+      "Spiritual Growth",
+      "Awareness",
+      "Personal Fulfillment",
+    ]);
+  });
+
+  it("doesnt show unique categories if empty array ", () => {
+    const wrapper = shallowMount(LessonCategory, {
+      props: {
+        lessons: [],
+        currentLesson: {},
+      },
+    });
+
+    const uniquecategories = wrapper.vm.uniqueCategories;
+
+    expect(uniquecategories).toEqual([]);
+  });
 });

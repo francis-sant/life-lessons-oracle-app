@@ -39,8 +39,6 @@ describe("LessonsComments.vue", () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-
-
   it("displays added comments properly", () => {
     const currentLesson = {
       id: 2,
@@ -90,8 +88,6 @@ describe("LessonsComments.vue", () => {
     expect(commentMessage2.text()).toBe(comment2.message);
   });
 
-
-
   it("does not add a comment when form fields are empty", async () => {
     const currentLesson = {
       id: 2,
@@ -114,8 +110,6 @@ describe("LessonsComments.vue", () => {
     await wrapper.find("form button[type='submit']").trigger("click");
     expect(wrapper.emitted("new-comment")).toBeFalsy();
   });
-
-
 
   it("does emit the new comment when form fields and button clicked ", async () => {
     const currentLesson = {
@@ -165,9 +159,6 @@ describe("LessonsComments.vue", () => {
     );
   });
 
-
-
-
   it("does emit the delete-comment with id properly", async () => {
     const wrapper = shallowMount(LessonsComments, {
       props: {
@@ -188,9 +179,7 @@ describe("LessonsComments.vue", () => {
     expect(wrapper.emitted("delete-comment")[0]).toEqual([idToDelete]);
   });
 
-
-
-  it('correctly determines if it hasComment', () => {
+  it("correctly determines if it hasComment", () => {
     const currentLesson = {
       id: 2,
       title: "Spiritual Benefits of Autism",
@@ -214,7 +203,6 @@ describe("LessonsComments.vue", () => {
       likes: 0,
     };
 
-    
     const wrapper = shallowMount(LessonsComments, {
       props: {
         currentLesson,
@@ -223,15 +211,12 @@ describe("LessonsComments.vue", () => {
 
     wrapper.vm.hasComments(currentLesson);
     expect(wrapper.vm.hasComments(currentLesson)).toBe(true);
-    
   });
 
-
-
-  it('correctly determines if there are no comments', () => {
+  it("correctly determines if there are no comments", () => {
     const noComments = [];
 
-     const wrapper = shallowMount(LessonsComments, {
+    const wrapper = shallowMount(LessonsComments, {
       props: {
         currentLesson: {
           comments: noComments,
@@ -242,40 +227,35 @@ describe("LessonsComments.vue", () => {
     expect(wrapper.vm.hasComments(wrapper.props().currentLesson)).toBe(false);
   });
 
-
   it('correctly determines if "No Realizations Yet" should be shown', () => {
     const wrapper = shallowMount(LessonsComments, {
       props: {
         currentLesson: {
-          comments: [], 
+          comments: [],
         },
       },
     });
     const shouldShowNoComment = wrapper.vm.shouldShowNoComment;
 
-   expect(shouldShowNoComment).toBe(true);
+    expect(shouldShowNoComment).toBe(true);
   });
 
-
-
   it('correctly determines if comments are present, so "No Realizations Yet" should not be shown', () => {
-      const wrapper = shallowMount(LessonsComments, {
+    const wrapper = shallowMount(LessonsComments, {
       props: {
         currentLesson: {
           comments: [
-            { id: 1, title: 'Title 1', message: 'Message 1' },
-            { id: 2, title: 'Title 2', message: 'Message 2' },
+            { id: 1, title: "Title 1", message: "Message 1" },
+            { id: 2, title: "Title 2", message: "Message 2" },
           ],
         },
       },
     });
 
- 
     const shouldShowNoComment = wrapper.vm.shouldShowNoComment;
 
     expect(shouldShowNoComment).toBe(false);
   });
-
 });
 
 // ---- New option with loop-
