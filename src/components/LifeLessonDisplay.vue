@@ -33,15 +33,15 @@
       </ul>
       <div class="lessonlikes">Likes: {{ currentLesson.likes }}</div>
       <div id="likebtn">
-        <button
-          v-if="!liked"
-          :class="{ unliked }"
-          data-testid="likeMe"
-          @click="likeMe"
-        >
+        <button v-if="!liked" data-testid="likeMe" @click="likeMe">
           Like Me
         </button>
-        <button v-else data-testid="unlikeMe" :class="{ liked }" @click="likeMe">
+        <button
+          v-else
+          data-testid="unlikeMe"
+          :class="{ liked }"
+          @click="likeMe"
+        >
           UnLike Me
         </button>
       </div>
@@ -132,9 +132,5 @@ export default {
 
 .started {
   display: block;
-}
-
-.unliked {
-  display: none;
 }
 </style>

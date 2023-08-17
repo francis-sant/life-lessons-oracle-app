@@ -123,7 +123,8 @@ describe("LifeLessonDisplay.vue", () => {
       id: 1,
       title: "Self-Inquiry",
       category: "Ramana Maharshi",
-      message: "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
+      message:
+        "Turn your attention inward and ask, 'Who am I?' Dive into the depths of your being to discover the true self beyond thoughts and identifications.",
       affirmation: "I am not my thoughts; I am the silent observer of my mind.",
       comments: [],
       likes: 0,
@@ -137,30 +138,24 @@ describe("LifeLessonDisplay.vue", () => {
       },
     });
 
-
     const likeButton = wrapper.find('[data-testid="likeMe"]');
 
     expect(likeButton.exists()).toBe(true);
     expect(likeButton.text()).toBe("Like Me");
 
-    
     await likeButton.trigger("click");
     await wrapper.vm.$nextTick();
-
 
     const unlikeButton = wrapper.find('[data-testid="unlikeMe"]');
     expect(unlikeButton.exists()).toBe(true);
     expect(unlikeButton.text()).toBe("UnLike Me");
-
 
     await unlikeButton.trigger("click");
     await wrapper.vm.$nextTick();
 
     expect(likeButton.exists()).toBe(true);
     expect(likeButton.text()).toBe("Like Me");
-
   });
-
 
   it("renders LessonsComments component with correct props", async () => {
     const lesson = {
